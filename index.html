@@ -552,21 +552,10 @@
                 <img src="./images/k-l.png" alt="Kalandula Logo" class="logo-image">
             </a>
             <div class="nav-links">
-                <a href="#menu">Menu</a>
-                <a href="#reservations">Reservations</a>
-                <a href="#about">About</a>
-                <a href="#contact">Contact</a>
             </div>
             <button class="menu-btn">☰</button>
         </nav>
     </header>
-
-    <div class="mobile-menu">
-        <a href="#menu">Menu</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
-    </div>
-
     <section class="hero glass">
         <video autoplay muted loop playsinline id="hero-video">
             <source src="./images/kaladula-falls.mp4" type="video/mp4">
@@ -616,73 +605,234 @@
 </div>
 
       <!-- Menu Modal -->
-      <div id="menuModal" class="modal">
-        <div class="modal-content">
-            <span class="close-modal" id="closeModal">&times;</span>
-            <div class="tabs">
-                <div class="tab active" onclick="switchTab('specials')">Today's Special</div>
-                <div class="tab" onclick="switchTab('main')">Main Menu</div>
-                <div class="tab" onclick="switchTab('drinks')">Drinks</div>
-                <div class="tab" onclick="switchTab('sides')">Sides</div>
-                <div class="tab" onclick="switchTab('sauces')">Sauces</div>
-            </div>
-            
-            <div id="specials" class="menu-section active">
-                <p>No specials available today.</p>
-            </div>
-            
-            <div id="main" class="menu-section">
-                <div class="menu-item">
-                    <h3>Chargrilled Chicken Wings (H)</h3>
-                    <p class="price">£7.00</p>
-                    <p>Perfectly marinated halal wings grilled on open flames, infused with Angolan-Portuguese spices</p>
-                </div>
-                <div class="menu-item">
-                    <h3>Kalandula Soup</h3>
-                    <p class="price">£6.50</p>
-                    <p>Our signature hearty soup combining tender beef, kidney beans and fresh vegetables in a rich broth</p>
-                </div>
-            </div>
-            
-            <div id="drinks" class="menu-section">
-                <div class="menu-item">
-                    <h3>Premium Spirits</h3>
-                    <p class="price">£5.00</p>
-                    <p>Single shot of vodka, rum, whiskey, cognac or tequila (Double £9.00)</p>
-                </div>
-                <div class="menu-item">
-                    <h3>Beer Selection</h3>
-                    <p class="price">£2.80</p>
-                    <p>Refreshing Sagres or Superblock beer</p>
-                </div>
-            </div>
-            
-            <div id="sides" class="menu-section">
-                <div class="menu-item">
-                    <h3>Brixton Fries (V, VG)</h3>
-                    <p class="price">£3.00</p>
-                    <p>Crispy fries seasoned with our special African-inspired spice blend</p>
-                </div>
-                <div class="menu-item">
-                    <h3>Rice (V, VG, GF)</h3>
-                    <p class="price">£3.00</p>
-                    <p>Aromatic rice cooked to perfection</p>
-                </div>
-            </div>
-            
-            <div id="sauces" class="menu-section">
-                <div class="menu-item">
-                    <h3>Gindungo</h3>
-                    <p>Our signature spicy sauce - an authentic Angolan recipe with a kick</p>
-                </div>
-                <div class="menu-item">
-                    <h3>Ketchup</h3>
-                    <p>Classic tomato sauce</p>
-                </div>
-            </div>
-        </div>
+<div id="menuModal" class="modal">
+  <div class="modal-content">
+    <span class="close-modal" id="closeModal">&times;</span>
+    <div class="tabs">
+      <!-- Dynamically generate tabs -->
+      <div class="tab active" onclick="switchTab('specials')">Today's Special</div>
+      <div class="tab" onclick="switchTab('main')">Main Menu</div>
+      <div class="tab" onclick="switchTab('drinks')">Drinks</div>
+      <div class="tab" onclick="switchTab('sides')">Sides</div>
+      <div class="tab" onclick="switchTab('sauces')">Sauces</div>
     </div>
 
+    <!-- Today's Special Section -->
+    <div id="specials" class="menu-section active">
+      <div class="menu-item">
+        <h3>Today's Special</h3>
+        <p class="price">Market Price</p>
+        <p>Ask your server about our unique daily special, crafted by our chef using the freshest ingredients</p>
+      </div>
+    </div>
+
+    <!-- Main Menu Section -->
+    <div id="main" class="menu-section">
+      <div class="menu-item">
+        <h3>Chargrilled Chicken Wings (H)</h3>
+        <p class="price">£7.00</p>
+        <p>Perfectly marinated halal wings grilled on open flames, infused with Angolan-Portuguese spices</p>
+      </div>
+      <div class="menu-item">
+        <h3>Kalandula Soup</h3>
+        <p class="price">£6.50</p>
+        <p>Our signature hearty soup combining tender beef, kidney beans and fresh vegetables in a rich broth</p>
+      </div>
+      <div class="menu-item">
+        <h3>Half Chargrilled Chicken (H)</h3>
+        <p class="price">£8.00</p>
+        <p>Halal half chicken marinated in our secret blend of African spices, chargrilled until perfectly tender</p>
+      </div>
+      <div class="menu-item">
+        <h3>Whole Grilled Chicken (H)</h3>
+        <p class="price">£13.00</p>
+        <p>Family-sized halal whole chicken marinated and grilled, perfect for sharing</p>
+      </div>
+      <div class="menu-item">
+        <h3>Grilled Lamb Chops</h3>
+        <p class="price">£15.00</p>
+        <p>Succulent lamb chops marinated in herbs, grilled to your preference with a smoky finish</p>
+      </div>
+      <div class="menu-item">
+        <h3>Grilled Pork Ribs</h3>
+        <p class="price">£12.00</p>
+        <p>Fall-off-the-bone tender pork ribs, slow-cooked and finished on the grill with our special glaze</p>
+      </div>
+      <div class="menu-item">
+        <h3>Mixed Meat Platter</h3>
+        <p class="price">£23.00</p>
+        <p>Ultimate sharing platter featuring our finest selection of grilled meats - perfect for groups (Halal options available)</p>
+      </div>
+      <div class="menu-item">
+        <h3>Seasoned Grilled Fish (GF)</h3>
+        <p class="price">£12.00</p>
+        <p>Fresh catch of the day seasoned with African herbs and grilled to flaky perfection</p>
+      </div>
+      <div class="menu-item">
+        <h3>Sirloin Steak Grilled</h3>
+        <p class="price">£18.00</p>
+        <p>Prime cut sirloin steak grilled to your liking, seasoned with our house blend</p>
+      </div>
+      <div class="menu-item">
+        <h3>Bitoque Steak Meal</h3>
+        <p class="price">£13.00</p>
+        <p>Traditional Portuguese-style steak topped with a fried egg, served with golden fries, rice and fresh salad</p>
+      </div>
+      <div class="menu-item">
+        <h3>Golden Fried Fish (GF)</h3>
+        <p class="price">£10.00</p>
+        <p>Fresh fish in our special crispy coating, fried until golden brown</p>
+      </div>
+      <div class="menu-item">
+        <h3>Grilled Chorizo</h3>
+        <p class="price">£5.50</p>
+        <p>Authentic Portuguese spicy sausage, grilled until perfectly charred and juicy</p>
+      </div>
+      <div class="menu-item">
+        <h3>King Prawns (GF)</h3>
+        <p class="price">£12.00</p>
+        <p>Succulent king prawns marinated in African spices and slow cooked to perfection</p>
+      </div>
+      <div class="menu-item">
+        <h3>Pork Skewers</h3>
+        <p class="price">£4.00</p>
+        <p>Tender pork pieces marinated and grilled on skewers</p>
+      </div>
+      <div class="menu-item">
+        <h3>Beef Skewers</h3>
+        <p class="price">£4.00</p>
+        <p>Succulent beef pieces marinated and grilled on skewers</p>
+      </div>
+    </div>
+
+    <!-- Drinks Section -->
+    <div id="drinks" class="menu-section">
+      <div class="menu-item">
+        <h3>Premium Spirits</h3>
+        <p class="price">£5.00</p>
+        <p>Single shot of vodka, rum, whiskey, cognac or tequila (Double £9.00)</p>
+      </div>
+      <div class="menu-item">
+        <h3>Beer Selection</h3>
+        <p class="price">£2.80</p>
+        <p>Refreshing Sagres or Superblock beer</p>
+      </div>
+      <div class="menu-item">
+        <h3>Premium Beers</h3>
+        <p class="price">£3.50</p>
+        <p>Choose from Desperados, Guinness, or Heineken</p>
+      </div>
+      <div class="menu-item">
+        <h3>Draft Beer Pint</h3>
+        <p class="price">£4.00</p>
+        <p>Fresh draft pint of Sagres, Superbock, or Guinness</p>
+      </div>
+      <div class="menu-item">
+        <h3>Wine Bottle</h3>
+        <p class="price">£18.00</p>
+        <p>Choose from our selected rose, red, or white wines</p>
+      </div>
+      <div class="menu-item">
+        <h3>Sangria</h3>
+        <p class="price">£4.00</p>
+        <p>Glass of our house-made sangria (Jug £9.00)</p>
+      </div>
+      <div class="menu-item">
+        <h3>Cocktails</h3>
+        <p class="price">£5.00</p>
+        <p>Perfectly mixed gin & tonic or classic martini</p>
+      </div>
+      <div class="menu-item">
+        <h3>House Wine</h3>
+        <p class="price">£4.00</p>
+        <p>Glass of our selected house wine</p>
+      </div>
+      <div class="menu-item">
+        <h3>Sparkling Water</h3>
+        <p class="price">£2.50</p>
+        <p>Refreshing bottled sparkling mineral water</p>
+      </div>
+      <div class="menu-item">
+        <h3>Still Water</h3>
+        <p class="price">£2.50</p>
+        <p>Chilled bottled still mineral water</p>
+      </div>
+      <div class="menu-item">
+        <h3>Soft Drinks</h3>
+        <p class="price">£2.00</p>
+        <p>Coca-Cola, Diet Coke, Sprite, Fanta</p>
+      </div>
+      <div class="menu-item">
+        <h3>Juices</h3>
+        <p class="price">£2.50</p>
+        <p>Orange, Apple, Cranberry, or Pineapple juice</p>
+      </div>
+      <div class="menu-item">
+        <h3>Carbonated Drinks</h3>
+        <p class="price">£2.00</p>
+        <p>Tonic Water, Ginger Ale, Soda Water</p>
+      </div>
+      <div class="menu-item">
+        <h3>Red Bull</h3>
+        <p class="price">£2.00</p>
+        <p>Classic energy drink (Regular or Sugar-Free)</p>
+      </div>
+    </div>
+
+    <!-- Sides Section -->
+    <div id="sides" class="menu-section">
+      <div class="menu-item">
+        <h3>Brixton Fries (V, VG)</h3>
+        <p class="price">£3.00</p>
+        <p>Crispy fries seasoned with our special African-inspired spice blend</p>
+      </div>
+      <div class="menu-item">
+        <h3>Rice (V, VG, GF)</h3>
+        <p class="price">£3.00</p>
+        <p>Aromatic rice cooked to perfection</p>
+      </div>
+      <div class="menu-item">
+        <h3>Salad (V, VG, GF)</h3>
+        <p class="price">£3.00</p>
+        <p>Crisp mixed salad with our house dressing</p>
+      </div>
+      <div class="menu-item">
+        <h3>Fufu/Pounded Yam (V)</h3>
+        <p class="price">£10.00</p>
+        <p>Traditional African delicacy served with rich tomato sauce</p>
+      </div>
+      <div class="menu-item">
+        <h3>Bread (V)</h3>
+        <p class="price">£0.50</p>
+        <p>Freshly baked roll</p>
+      </div>
+    </div>
+
+    <!-- Sauces Section -->
+    <div id="sauces" class="menu-section">
+      <div class="menu-item">
+        <h3>Gindungo</h3>
+        <p>Our signature spicy sauce - an authentic Angolan recipe with a kick</p>
+      </div>
+      <div class="menu-item">
+        <h3>Ketchup</h3>
+        <p>Classic tomato sauce</p>
+      </div>
+      <div class="menu-item">
+        <h3>Mayo</h3>
+        <p>Smooth, creamy mayonnaise</p>
+      </div>
+      <div class="menu-item">
+        <h3>Garlic Mayo</h3>
+        <p>Our special garlic-infused mayonnaise</p>
+      </div>
+      <div class="menu-item">
+        <h3>BBQ</h3>
+        <p>Rich, smoky barbecue sauce</p>
+      </div>
+    </div>
+  </div>
+</div>
     <button class="menu-btn" id="menuBtn">MENU</button>
 
     <section class="info-section">
