@@ -556,16 +556,35 @@
         </nav>
     </header>
     <section class="hero glass">
-        <video autoplay muted loop playsinline id="hero-video">
+       <video autoplay muted loop playsinline id="hero-video">
     <source src="./images/kaladula-falls.mp4" type="video/mp4">
 </video>
 
 <script>
-    // Add this script after your video element
-    const video = document.getElementById('hero-video');
-    
-    // Set playback rate (1 = normal speed, 0.5 = half speed, 2 = double speed)
-    video.playbackRate = 0.5; // Adjust this value for different speeds
+    document.addEventListener('DOMContentLoaded', function() {
+        const video = document.getElementById('hero-video');
+
+        // Set playback rate for super slow motion
+        video.playbackRate = 0.25; // Adjust this value (0.25 = 25% speed)
+
+        // Ensure seamless looping
+        video.addEventListener('timeupdate', function() {
+            // Check if the video is near the end
+            if (this.currentTime > this.duration - 0.1) {
+                // Reset to the start without a visible jump
+                this.currentTime = 0;
+                this.play();
+            }
+        });
+
+        // Preload the video for smoother playback
+        video.preload = 'auto';
+
+        // Ensure the video starts playing
+        video.play().catch(error => {
+            console.log('Autoplay was prevented. User interaction is required to start playback.');
+        });
+    });
 </script>
         <div class="hero-content">
             <h1 class="hero-title">
