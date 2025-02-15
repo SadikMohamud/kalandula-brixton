@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tribal Tastes Restaurant</title>
+    <style>
+        :root {
+            --primary: #fcd34d;
+            --primary-dark: #b45309;
+            --background: #1c1917;
+            --text-light: #fef3c7;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+    background-color: var(--background);
+    color: var(--text-light);
+    line-height: 1.6;
+    background-image: url('./images/samakaka.jpg');
+    background-size: cover;          /* This stretches the image */
+    background-position: center;     /* Centers the image */
+    background-attachment: fixed;    /* Keeps image fixed during scroll */
+    background-repeat: no-repeat;    /* Prevents image repetition */
+    min-height: 100vh;              /* Ensures full viewport height */
+    margin: 0;                      /* Removes default margin */
+}
+        /* Glassmorphism */
+        .glass {
+            background: rgba(224, 223, 223, 0.3);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+        }
+
+        /* Header Styles */
+        header {
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+    display: flex;
+    align-items: center;
+    padding: 5px 0;
+}
+
+.logo-image {
+    height: 50px;  /* Adjust this value to match your logo's desired height */
+    width: auto;   /* This maintains the aspect ratio */
+    object-fit: contain;
+}
+        .nav-links {
+            display: none;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .menu-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    padding: 15px 30px;
+    background: var(--primary);
+    color: var(--background);
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    z-index: 999;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    display: block; /* Ensure it's always visible */
+}
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            padding: 2rem;
+            overflow: hidden;  /* Added for video containment */
+        }
+
+        #hero-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+
+
+        .red {
+            color: #ff0000;
+        }
+
+        /* Focus-in-contract-bck Animation */
+@keyframes focus-in-contract-bck {
+    0% {
+        letter-spacing: 1em;
+        transform: translateZ(300px);
+        filter: blur(12px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateZ(12px);
+        filter: blur(0);
+        opacity: 1;
+    }
+}
+
+.hero-title {
+    font-size: 4rem;
+    color: var(--text-light);
+    margin-bottom: 1rem;
+    letter-spacing: 2px;
+    animation: focus-in-contract-bck 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+        .hero-subtitle {
+            font-size: 1.4rem;
+            margin-bottom: 2rem;
+            letter-spacing: 1px;
+        }
+
+        .book-btn {
+            background-color: transparent;
+            color: var(--text-light);
+            padding: 1rem 2.5rem;
+            border: 2px solid var(--text-light);
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            letter-spacing: 1px;
+        }
+
+        .book-btn:hover {
+            background-color: var(--text-light);
+            color: var(--background);
+        }
+
+        /* Gallery Section Styles */
+.gallery-header {
+    text-align: center;
+    margin: 4rem 0 2rem;
+    color: var(--text-light);
+}
+
+.gallery-header h2 {
+    font-size: 2.5rem;
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+}
+
+.gallery-header em {
+    font-size: 1.2rem;
+    color: var(--text-light);
+    opacity: 0.8;
+}
+
+.gallery-container {
+    overflow: hidden;
+    position: relative;
+    margin: 2rem 0;
+    padding: 1rem 0;
+}
+
+.image-track {
+    display: flex;
+    gap: 1rem;
+    width: max-content;
+    animation: scroll 30s linear infinite;
+}
+
+@keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+.gallery-item {
+    flex: 0 0 auto;
+    width: 300px;
+    height: 200px;
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.gallery-item:hover {
+    transform: scale(1.05);
+}
+
+.controls {
+    text-align: center;
+    margin: 2rem 0;
+}
+
+.btn {
+    background-color: var(--primary);
+    color: var(--background);
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: bold;
+    margin: 0 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    background-color: var(--primary-dark);
+}
+
+/* Image Modal Styles */
+#imageModal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: 1000;
+    overflow-y: auto;
+}
+
+#imageModal .modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 10px;
+}
+
+.modal-close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    color: var(--primary);
+    font-size: 40px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.modal-close:hover {
+    color: #ff0000;
+}
+
+         /* Modal Styles */
+         .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            overflow-y: auto;
+        }
+
+        .modal-content {
+            background: rgba(28, 25, 23, 0.85);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            margin: 5% auto;
+            width: 90%;
+            max-width: 800px;
+            border-radius: 15px;
+            border: 1px solid rgba(252, 211, 77, 0.1);
+            position: relative;
+            padding: 20px;
+            color: var(--text-light);
+        }
+
+        .close-modal {
+            position: absolute;
+            right: 20px;
+            top: 10px;
+            font-size: 30px;
+            color: var(--primary);
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .close-modal:hover {
+            color: #ff0000;
+        }
+
+        /* Tabs Styling */
+        .tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid rgba(252, 211, 77, 0.2);
+            padding-bottom: 10px;
+        }
+
+        .tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            color: var(--text-light);
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            background: rgba(252, 211, 77, 0.1);
+        }
+
+        .tab:hover {
+            background: rgba(252, 211, 77, 0.2);
+        }
+
+        .tab.active {
+            background: var(--primary);
+            color: var(--background);
+        }
+
+        /* Menu Sections */
+        .menu-section {
+            display: none;
+            padding: 20px 0;
+        }
+
+        .menu-section.active {
+            display: block;
+        }
+
+        .menu-item {
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(252, 211, 77, 0.1);
+        }
+
+        .menu-item h3 {
+            color: var(--primary);
+            margin-bottom: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .price {
+            color: #ff0000;
+            font-weight: bold;
+            margin: 5px 0;
+        }
+
+        .menu-item p {
+            color: var(--text-light);
+            opacity: 0.9;
+            font-size: 0.9em;
+        }
+
+        .menu-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    padding: 15px 30px;
+    background: var(--primary);
+    color: var(--background);
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    z-index: 999;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    display: block; /* Ensure it's always visible */
+}
+
+        .menu-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .tabs {
+                flex-direction: column;
+                gap: 5px;
+            }
+            
+            .modal-content {
+                margin: 2% auto;
+                width: 95%;
+            }
+            
+            .menu-btn {
+                bottom: 20px;
+                right: 20px;
+                padding: 12px 25px;
+            }
+        }
+
+        /* Info Cards */
+        .info-section {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 2rem;
+            display: grid;
+            gap: 2rem;
+            grid-template-columns: 1fr;
+        }
+
+        .info-card {
+            text-align: center;
+            padding: 2rem;
+            border-radius: 1rem;
+        }
+
+        .info-card i {
+            color: var(--primary);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .info-card h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Footer */
+        footer {
+            padding: 2rem;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        .social-links {
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            margin: 0 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--primary);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            height: 100vh;
+            width: 70%;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            transition: right 0.3s ease;
+        }
+
+        .mobile-menu.active {
+            right: 0;
+        }
+
+        .mobile-menu a {
+            display: block;
+            color: var(--text-light);
+            text-decoration: none;
+            padding: 1rem 0;
+            font-size: 1.2rem;
+            border-bottom: 1px solid rgba(252, 211, 77, 0.3);
+        }
+
+        /* Media Queries */
+        @media (min-width: 768px) {
+
+            .nav-links {
+                display: flex;
+                gap: 2rem;
+            }
+
+            .menu-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .info-section {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .hero h1 {
+                font-size: 4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="glass">
+        <nav class="nav-container">
+            <a href="#" class="logo">
+                <img src="./images/k-l.png" alt="Kalandula Logo" class="logo-image">
+            </a>
+            <div class="nav-links">
+                <a href="#menu">Menu</a>
+                <a href="#reservations">Reservations</a>
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <button class="menu-btn">☰</button>
+        </nav>
+    </header>
+
+    <div class="mobile-menu">
+        <a href="#menu">Menu</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+    </div>
+
+    <section class="hero glass">
+        <video autoplay muted loop playsinline id="hero-video">
+            <source src="./images/kaladula-falls.mp4" type="video/mp4">
+        </video>
+        <div class="hero-content">
+            <h1 class="hero-title">
+                <span class="red">K</span>ALANDUL<span class="red">A</span>
+            </h1>
+            <p class="hero-subtitle">Bar |<span class="red"> Grill</span> | Restaurant | Lounge</p>
+            <a href="https://app.tableo.com/r/agKC9wu" target="_blank" class="book-btn">BOOK NOW</a>
+        </div>
+    </section>
+    <!-- Gallery Section -->
+<div id="imageModal" class="modal">
+    <span class="modal-close">&times;</span>
+    <img class="modal-content" id="modalImage" src="" alt="Enlarged image">
+</div>
+
+<!-- First Marquee -->
+<div class="gallery-header">
+    <h2></h2>
+    <em>Mouth watering African Cuisine</em>
+</div>
+<div class="gallery-container">
+    <div class="image-track track-1" id="track1">
+        <div class="gallery-item" onclick="openModal('./images/food-one.jpg')"><img src="./images/food-one.jpg" alt="Football 1"></div>
+        <div class="gallery-item" onclick="openModal('/api/placeholder/900/600')"><img src="./images/food-2.jpg" alt="Football 2"></div>
+        <div class="gallery-item" onclick="openModal('/api/placeholder/900/600')"><img src="./images/food-3.jpg" alt="Football 3"></div>
+        <div class="gallery-item" onclick="openModal('/api/placeholder/900/600')"><img src="./images/food-4.jpg" alt="Football 4"></div>
+        <div class="gallery-item" onclick="openModal('/api/placeholder/900/600')"><img src="./images/food-5.jpg" alt="Football 5"></div>
+        <div class="gallery-item" onclick="openModal('/api/placeholder/900/600')"><img src="./images/food-6.jpg" alt="Football 6"></div>
+        <div class="gallery-item" onclick="openModal('/api/placeholder/900/600')"><img src="./images/food-7.jpg" alt="Football 7"></div>
+        <div class="gallery-item" onclick="openModal('/api/placeholder/900/600')"><img src="./images/food-8.jpeg" alt="Football 8"></div>
+        <div class="gallery-item" onclick="openModal('/api/placeholder/900/600')"><img src="./images/food-9.jpeg" alt="Football 9"></div>
+
+        <!-- Clones -->
+        <div class="gallery-item" onclick="openModal('/api/placeholder/900/600')"><img src="./images/food-one.jpg" alt="Football 1"></div>
+        <div class="gallery-item" onclick="openModal('/api/placeholder/900/600')"><img src="./images/food-2.jpg" alt="Football 2"></div>
+        <div class="gallery-item" onclick="openModal('/api/placeholder/900/600')"><img src="./images/food-3.jpg" alt="Football 3"></div>
+        <div class="gallery-item" onclick="openModal('/api/placeholder/900/600')"><img src="./images/food-4.jpg" alt="Football 4"></div>
+        <div class="gallery-item" onclick="openModal('/api/placeholder/900/600')"><img src="./images/food-5.jpg" alt="Football 5"></div>
+        <div class="gallery-item" onclick="openModal('/api/placeholder/900/600')"><img src="./images/food-6.jpg" alt="Football 6"></div>
+        <div class="gallery-item" onclick="openModal('/api/placeholder/900/600')"><img src="./images/food-7jpg" alt="Football 7"></div>
+        <div class="gallery-item" onclick="openModal('/api/placeholder/900/600')"><img src="./images/food-8.jpeg" alt="Football 8"></div>
+        <div class="gallery-item" onclick="openModal('/api/placeholder/900/600')"><img src="./images/food-9.jpeg" alt="Football 9"></div>
+    </div>
+</div>
+
+      <!-- Menu Modal -->
+      <div id="menuModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" id="closeModal">&times;</span>
+            <div class="tabs">
+                <div class="tab active" onclick="switchTab('specials')">Today's Special</div>
+                <div class="tab" onclick="switchTab('main')">Main Menu</div>
+                <div class="tab" onclick="switchTab('drinks')">Drinks</div>
+                <div class="tab" onclick="switchTab('sides')">Sides</div>
+                <div class="tab" onclick="switchTab('sauces')">Sauces</div>
+            </div>
+            
+            <div id="specials" class="menu-section active">
+                <p>No specials available today.</p>
+            </div>
+            
+            <div id="main" class="menu-section">
+                <div class="menu-item">
+                    <h3>Chargrilled Chicken Wings (H)</h3>
+                    <p class="price">£7.00</p>
+                    <p>Perfectly marinated halal wings grilled on open flames, infused with Angolan-Portuguese spices</p>
+                </div>
+                <div class="menu-item">
+                    <h3>Kalandula Soup</h3>
+                    <p class="price">£6.50</p>
+                    <p>Our signature hearty soup combining tender beef, kidney beans and fresh vegetables in a rich broth</p>
+                </div>
+            </div>
+            
+            <div id="drinks" class="menu-section">
+                <div class="menu-item">
+                    <h3>Premium Spirits</h3>
+                    <p class="price">£5.00</p>
+                    <p>Single shot of vodka, rum, whiskey, cognac or tequila (Double £9.00)</p>
+                </div>
+                <div class="menu-item">
+                    <h3>Beer Selection</h3>
+                    <p class="price">£2.80</p>
+                    <p>Refreshing Sagres or Superblock beer</p>
+                </div>
+            </div>
+            
+            <div id="sides" class="menu-section">
+                <div class="menu-item">
+                    <h3>Brixton Fries (V, VG)</h3>
+                    <p class="price">£3.00</p>
+                    <p>Crispy fries seasoned with our special African-inspired spice blend</p>
+                </div>
+                <div class="menu-item">
+                    <h3>Rice (V, VG, GF)</h3>
+                    <p class="price">£3.00</p>
+                    <p>Aromatic rice cooked to perfection</p>
+                </div>
+            </div>
+            
+            <div id="sauces" class="menu-section">
+                <div class="menu-item">
+                    <h3>Gindungo</h3>
+                    <p>Our signature spicy sauce - an authentic Angolan recipe with a kick</p>
+                </div>
+                <div class="menu-item">
+                    <h3>Ketchup</h3>
+                    <p>Classic tomato sauce</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <button class="menu-btn" id="menuBtn">MENU</button>
+
+    <section class="info-section">
+        <div class="info-card glass">
+            <i>🕒</i>
+            <h3>Hours</h3>
+            <p>Tue-Sun: 5PM-11PM</p>
+        </div>
+        <div class="info-card glass">
+            <i>📍</i>
+            <h3>Location</h3>
+            <p>123 Heritage Lane</p>
+        </div>
+        <div class="info-card glass">
+            <i>📞</i>
+            <h3>Reservations</h3>
+            <p>(555) 123-4567</p>
+        </div>
+    </section>
+
+    <footer class="glass">
+        <p>© 2025 Tribal Tastes Restaurant</p>
+        <div class="social-links">
+            <a href="#">Instagram</a>
+            <a href="#">Facebook</a>
+            <a href="#">Twitter</a>
+        </div>
+    </footer>
+
+    <script>
+       // Mobile menu functionality
+const mobileMenuBtn = document.querySelector('.menu-btn');
+const mobileMenu = document.querySelector('.mobile-menu');
+
+mobileMenuBtn.addEventListener('click', () => {
+    mobileMenu.classList.toggle('active');
+});
+
+// Close mobile menu when clicking a link
+const mobileLinks = document.querySelectorAll('.mobile-menu a');
+mobileLinks.forEach(link => {
+    link.addEventListener('click', () => {
+        mobileMenu.classList.remove('active');
+    });
+});
+
+// Close mobile menu when clicking outside
+document.addEventListener('click', (e) => {
+    if (!mobileMenu.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+        mobileMenu.classList.remove('active');
+    }
+});
+
+         // Modal functionality
+         const menuModal = document.getElementById('menuModal');
+        const modalMenuBtn = document.getElementById('menuBtn');
+        const closeModal = document.getElementById('closeModal');
+
+        modalMenuBtn.onclick = function() {
+            menuModal.style.display = "block";
+            document.body.style.overflow = "hidden";
+        }
+
+        closeModal.onclick = function() {
+            menuModal.style.display = "none";
+            document.body.style.overflow = "auto";
+        }
+
+        window.onclick = function(event) {
+            if (event.target == menuModal) {
+                menuModal.style.display = "none";
+                document.body.style.overflow = "auto";
+            }
+        }
+
+        // Track controls
+const tracks = [
+    document.getElementById('track1'),
+    document.getElementById('track2'),
+    document.getElementById('track3')
+];
+const pauseBtn = document.getElementById('pauseBtn');
+const resumeBtn = document.getElementById('resumeBtn');
+
+pauseBtn.addEventListener('click', () => {
+    tracks.forEach(track => {
+        track.style.animationPlayState = 'paused';
+    });
+});
+
+resumeBtn.addEventListener('click', () => {
+    tracks.forEach(track => {
+        track.style.animationPlayState = 'running';
+    });
+});
+
+// Modal functionality
+const modal = document.getElementById('imageModal');
+const modalImg = document.getElementById('modalImage');
+const closeBtn = document.getElementsByClassName('modal-close')[0];
+
+function openModal(imgSrc) {
+    modal.style.display = 'block';
+    modalImg.src = imgSrc;
+}
+
+closeBtn.onclick = function() {
+    modal.style.display = 'none';
+}
+
+modal.onclick = function(e) {
+    if (e.target === modal) {
+        modal.style.display = 'none';
+    }
+}
+
+        // Tab switching functionality
+        function switchTab(tabName) {
+            // Hide all menu sections
+            const menuSections = document.getElementsByClassName('menu-section');
+            for (let section of menuSections) {
+                section.classList.remove('active');
+            }
+            
+            // Deactivate all tabs
+            const tabs = document.getElementsByClassName('tab');
+            for (let tab of tabs) {
+                tab.classList.remove('active');
+            }
+            
+            // Show selected section and activate tab
+            document.getElementById(tabName).classList.add('active');
+            event.target.classList.add('active');
+        }
+
+    </script>
+</body>
+</html>
