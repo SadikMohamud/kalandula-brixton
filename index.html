@@ -557,8 +557,16 @@
     </header>
     <section class="hero glass">
         <video autoplay muted loop playsinline id="hero-video">
-            <source src="./images/kaladula-falls.mp4" type="video/mp4">
-        </video>
+    <source src="./images/kaladula-falls.mp4" type="video/mp4">
+</video>
+
+<script>
+    // Add this script after your video element
+    const video = document.getElementById('hero-video');
+    
+    // Set playback rate (1 = normal speed, 0.5 = half speed, 2 = double speed)
+    video.playbackRate = 0.5; // Adjust this value for different speeds
+</script>
         <div class="hero-content">
             <h1 class="hero-title">
                 <span class="red">K</span>ALANDUL<span class="red">A</span>
