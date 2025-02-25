@@ -713,6 +713,32 @@
                 font-size: 4rem;
             }
         }
+
+        .modern-link {
+    color: #ff0000; /* Red color */
+    text-decoration: none; /* Remove underline */
+    font-weight: bold; /* Make text bold */
+    transition: color 0.3s ease, transform 0.3s ease; /* Smooth transitions */
+    display: inline-block; /* For transform effects */
+}
+
+.modern-link:hover {
+    color: #cc0000; /* Darker red on hover */
+    transform: translateY(-2px); /* Slight lift effect on hover */
+}
+
+.modern-link::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: #ff0000; /* Red underline */
+    transition: width 0.3s ease; /* Animate the underline */
+}
+
+.modern-link:hover::after {
+    width: 100%; /* Full width underline on hover */
+}
     </style>
 </head>
 <body>
@@ -1082,7 +1108,7 @@
         <div class="info-card glass">
 
             <h3>Location</h3>
-            <p>Kalandula Brixton, 5 Brixton Station Rd, London SW9 8PA</p>
+            <a href="https://g.co/kgs/prx7tME" class="modern-link">5 Brixton Station Rd, London SW9 8PA</a>
         </div>
         <div class="info-card glass">
             <a href="https://app.tableo.com/r/agKC9wu" target="_blank" class="book-btn">BOOK NOW</a>
