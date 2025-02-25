@@ -85,16 +85,31 @@
     bottom: 30px;
     right: 30px;
     padding: 15px 30px;
-    background: var(--primary);
-    color: var(--background);
-    border: none;
-    border-radius: 25px;
-    cursor: pointer;
+    font-size: 24px;
     font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+    background-color: #FF0000;
+    border: 2px solid #000;
+    border-radius: 10px;
+    box-shadow: 5px 5px 0px #FCD34D;
     transition: all 0.3s ease;
+    cursor: pointer;
     z-index: 999;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-    display: block; /* Ensure it's always visible */
+}
+
+.menu-btn:hover {
+    background-color: #070707;
+    color: #FCD34D;
+    border: 2px solid #fbfbfb;
+    box-shadow: 5px 5px 0px #FF0000;
+}
+
+.menu-btn:active {
+    background-color: #fcf414;
+    box-shadow: none;
+    transform: translateY(4px);
 }
 
         /* Hero Section */
@@ -170,21 +185,46 @@
             letter-spacing: 1px;
         }
 
-        .book-btn {
-            background-color: transparent;
-            color: var(--text-light);
-            padding: 1rem 2.5rem;
-            border: 2px solid var(--text-light);
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            letter-spacing: 1px;
+          .book-btn {
+            display: flex;
+            font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+  justify-content: space-around;
+  align-items: center;
+  padding: 1em 0em 1em 1em;
+  background-color: #FF0000;
+  cursor: pointer;
+  box-shadow: 4px 6px 0px #FCD34D;
+  border: 4px solid black;
+  border-radius: 15px;
+  position: relative;
+  overflow: hidden;
+  z-index: 100;
+  transition: box-shadow 250ms, transform 250ms, filter 50ms;
         }
 
         .book-btn:hover {
-            background-color: var(--text-light);
-            color: var(--background);
+            transform: translate(2px, 2px);
+  box-shadow: 2px 3px 0px #ff0000;
+  border:4px solid #fff;
+  color: #FCD34D;
         }
+
+        .book-btn::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: rgb(6, 6, 6);
+  z-index: -1;
+  transform: translateX(-100%);
+  transition: transform 250ms;
+}
+.book-btn:hover::after {
+  transform: translateX(0);
+}
 
         /* Gallery Section Styles */
 .gallery-header {
