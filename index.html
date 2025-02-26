@@ -794,7 +794,7 @@
 <div id="imageModal" class="modal">
     <span class="modal-close">&times;</span>
     <img class="modal-content" id="modalImage" src="" alt="Enlarged image">
-</div>
+
 
 <!-- First Marquee -->
 <div class="gallery-header">
@@ -825,6 +825,7 @@
         <div class="gallery-item" onclick="openModal('./images/food-9.jpg')"><img src="./images/food-9.jpeg" alt="Food-9"></div>
     </div>
 </div>
+    </div>
 
     <section id="about" class="about-section glass">
     <div class="about-container">
@@ -1190,7 +1191,7 @@ resumeBtn.addEventListener('click', () => {
 });
 
 // Modal functionality
-const modal = document.getElementById('track1');
+const modal = document.getElementById('imageModal');
 const modalImg = document.getElementById('modalImage');
 const closeBtn = document.getElementsByClassName('modal-close')[0];
 
