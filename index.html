@@ -739,6 +739,54 @@
 .modern-link:hover::after {
     width: 100%; /* Full width underline on hover */
 }
+
+footer {
+        padding: 2rem;
+        text-align: center;
+        margin-top: 4rem;
+        background: rgba(28, 25, 23, 0.7);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        border-top: 1px solid rgba(252, 211, 77, 0.1);
+    }
+
+    footer p {
+        color: var(--text-light);
+        margin-bottom: 1rem;
+    }
+
+    .social-links {
+        margin: 1.5rem 0;
+    }
+
+    .social-links a {
+        color: var(--text-light);
+        text-decoration: none;
+        margin: 0 1rem;
+        transition: color 0.3s ease;
+        font-size: 1.1rem;
+    }
+
+    .social-links a:hover {
+        color: var(--primary);
+    }
+
+    .developer-credit {
+        margin-top: 1.5rem;
+        font-size: 0.9rem;
+        opacity: 0.8;
+    }
+
+    .developer-credit a {
+        color: var(--primary);
+        text-decoration: none;
+        transition: all 0.3s ease;
+    }
+
+    .developer-credit a:hover {
+        color: #ff0000;
+        text-decoration: underline;
+    }
     </style>
 </head>
 <body>
@@ -1115,12 +1163,14 @@
         </div>
     </section>
 
-    <footer class="glass">
-        <p>©Kalandula 2025 ALL RIGHTS RESERVED® </p>
-        <div class="social-links">
-            <a href="https://www.instagram.com/kalandulabng?igsh=eDBmNnVvaW9leTh1">Instagram</a>
-        </div>
-    </footer>
+    <!-- Footer HTML -->
+<footer class="glass">
+    <p>©Kalandula 2025 ALL RIGHTS RESERVED®</p>
+    <div class="social-links">
+        <a href="https://www.instagram.com/kalandula" target="_blank">Instagram</a>
+    </div>
+    <p class="developer-credit">Developed by <a href="https://github.com/SadikMohamud" target="_blank">Snurm.dev</a></p>
+</footer>
 
     <script>
        // Mobile menu functionality
