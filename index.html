@@ -1,80 +1,1284 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>404 – Page Not Found</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalandula Bar & Grill</title>
+    <style>
+        :root {
+            --primary: #fcd34d;
+            --primary-dark: #b45309;
+            --background: #1c1917;
+            --text-light: #fef3c7;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+    background-color: var(--background);
+    color: var(--text-light);
+    line-height: 1.6;
+    background-image: url('./images/samakaka.webp');
+    background-size: cover;          /* This stretches the image */
+    background-position: center;     /* Centers the image */
+    background-attachment: fixed;    /* Keeps image fixed during scroll */
+    background-repeat: no-repeat;    /* Prevents image repetition */
+    min-height: 100vh;              /* Ensures full viewport height */
+    margin: 0;                      /* Removes default margin */
+}
+        /* Glassmorphism */
+        .glass {
+            background: rgba(224, 223, 223, 0.3);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+        }
+
+        /* Header Styles */
+        header {
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+    display: flex;
+    align-items: center;
+    padding: 5px 0;
+}
+
+.logo-image {
+    height: 50px;  /* Adjust this value to match your logo's desired height */
+    width: auto;   /* This maintains the aspect ratio */
+    object-fit: contain;
+}
+        .nav-links {
+            display: none;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+         .menu-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    padding: 15px 30px;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+    background-color: #FF0000;
+    border: 2px solid #000;
+    border-radius: 10px;
+    box-shadow: 5px 5px 0px #FCD34D;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    z-index: 999;
+}
+
+.menu-btn:hover {
+    background-color: #070707;
+    color: #FCD34D;
+    border: 2px solid #fbfbfb;
+    box-shadow: 5px 5px 0px #FF0000;
+}
+
+.menu-btn:active {
+    background-color: #fcf414;
+    box-shadow: none;
+    transform: translateY(4px);
+}
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            padding: 2rem;
+            overflow: hidden;  /* Added for video containment */
+        }
+
+        #hero-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+
+
+        .red {
+            color: #ff0000;
+        }
+
+        /* Focus-in-contract-bck Animation */
+@keyframes focus-in-contract-bck {
+    0% {
+        letter-spacing: 1em;
+        transform: translateZ(300px);
+        filter: blur(12px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateZ(12px);
+        filter: blur(0);
+        opacity: 1;
+    }
+}
+
+.hero-title {
+    font-size: 4rem;
+    color: var(--text-light);
+    margin-bottom: 1rem;
+    letter-spacing: 2px;
+    animation: focus-in-contract-bck 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+        .hero-subtitle {
+            font-size: 1.4rem;
+            margin-bottom: 2rem;
+            letter-spacing: 1px;
+        }
+
+          .book-btn {
+            display: flex;
+            font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+  justify-content: space-around;
+  align-items: center;
+  padding: 1em 0em 1em 1em;
+  background-color: #FF0000;
+  cursor: pointer;
+  box-shadow: 4px 6px 0px #FCD34D;
+  border: 4px solid black;
+  border-radius: 15px;
+  position: relative;
+  overflow: hidden;
+  z-index: 100;
+  transition: box-shadow 250ms, transform 250ms, filter 50ms;
+        }
+
+        .book-btn:hover {
+            transform: translate(2px, 2px);
+  box-shadow: 2px 3px 0px #ff0000;
+  border:4px solid #fff;
+  color: #FCD34D;
+        }
+
+        .book-btn::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: rgb(6, 6, 6);
+  z-index: -1;
+  transform: translateX(-100%);
+  transition: transform 250ms;
+}
+.book-btn:hover::after {
+  transform: translateX(0);
+}
+
+        /* Gallery Section Styles */
+.gallery-header {
+    text-align: center;
+    margin: 4rem 0 2rem;
+    color: var(--text-light);
+}
+
+.gallery-header h2 {
+    font-size: 2.5rem;
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+}
+
+.gallery-header em {
+    font-size: 1.2rem;
+    color: var(--text-light);
+    opacity: 0.8;
+}
+
+.gallery-container {
+    overflow: hidden;
+    position: relative;
+    margin: 2rem 0;
+    padding: 1rem 0;
+}
+
+.image-track {
+    display: flex;
+    gap: 1rem;
+    width: max-content;
+    animation: scroll 30s linear infinite;
+}
+
+@keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+.gallery-item {
+    flex: 0 0 auto;
+    width: 300px;
+    height: 200px;
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.gallery-item:hover {
+    transform: scale(1.05);
+}
+
+.controls {
+    text-align: center;
+    margin: 2rem 0;
+}
+
+.btn {
+    background-color: var(--primary);
+    color: var(--background);
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: bold;
+    margin: 0 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    background-color: var(--primary-dark);
+}
+
+        .about-section {
+    padding: 80px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.about-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    color: var(--text-light);
+    letter-spacing: 2px;
+}
+
+.red {
+    color: #ff0000;
+}
+
+.about-description {
+    color: var(--text-light);
+    margin-bottom: 20px;
+    line-height: 1.8;
+    font-size: 1.1rem;
+}
+
+.about-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 40px;
+}
+
+.stat-item {
+    text-align: center;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    backdrop-filter: blur(5px);
+    transition: transform 0.3s ease;
+}
+
+.stat-item:hover {
+    transform: translateY(-5px);
+}
+
+.stat-number {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: var(--primary);
+    margin-bottom: 5px;
+}
+
+.stat-label {
+    color: var(--text-light);
+    font-size: 0.9rem;
+}
+
+.about-image-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    position: relative;
+}
+
+.about-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.about-img:hover {
+    transform: scale(1.05);
+}
+
+/* Make the first image span two columns */
+.about-img:first-child {
+    grid-column: 1 / -1;
+    height: 300px;
+}
+
+/* Responsive Design */
+@media (max-width: 968px) {
+    .about-container {
+        grid-template-columns: 1fr;
     }
 
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: url('https://upload.wikimedia.org/wikipedia/commons/4/4d/Kalandula_falls_2.jpg') no-repeat center center/cover;
-      color: #fff;
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      background-attachment: fixed;
-      position: relative;
+    .about-stats {
+        grid-template-columns: repeat(3, 1fr);
     }
 
-    .overlay {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(0, 0, 0, 0.75);
-      z-index: -1;
+    .section-title {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .about-stats {
+        grid-template-columns: repeat(2, 1fr);
     }
 
-    h1 {
-      font-size: 5rem;
-      color: #ffd700;
+    .about-image-grid {
+        grid-template-columns: 1fr;
     }
 
-    p {
-      font-size: 1.3rem;
-      margin: 20px 0;
-      max-width: 600px;
-      padding: 0 15px;
+    .about-img:first-child {
+        height: 200px;
+    }
+}
+
+@media (max-width: 480px) {
+    .about-stats {
+        grid-template-columns: 1fr;
     }
 
-    a {
-      display: inline-block;
-      margin-top: 15px;
-      padding: 12px 24px;
-      background: #ffd700;
-      color: #000;
-      text-decoration: none;
-      font-weight: bold;
-      border-radius: 6px;
-      transition: background 0.3s ease;
+    .stat-item {
+        padding: 15px;
+    }
+}
+
+/* Image Modal Styles */
+#imageModal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: 1000;
+    overflow-y: auto;
+}
+
+#imageModal .modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 10px;
+}
+
+.modal-close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    color: var(--primary);
+    font-size: 40px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.modal-close:hover {
+    color: #ff0000;
+}
+
+         /* Modal Styles */
+         .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            overflow-y: auto;
+        }
+
+        .modal-content {
+            background: rgba(28, 25, 23, 0.85);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            margin: 5% auto;
+            width: 90%;
+            max-width: 800px;
+            border-radius: 15px;
+            border: 1px solid rgba(252, 211, 77, 0.1);
+            position: relative;
+            padding: 20px;
+            color: var(--text-light);
+        }
+
+        .close-modal {
+            position: absolute;
+            right: 20px;
+            top: 10px;
+            font-size: 30px;
+            color: var(--primary);
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .close-modal:hover {
+            color: #ff0000;
+        }
+
+        /* Tabs Styling */
+        .tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid rgba(252, 211, 77, 0.2);
+            padding-bottom: 10px;
+        }
+
+        .tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            color: var(--text-light);
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            background: rgba(252, 211, 77, 0.1);
+        }
+
+        .tab:hover {
+            background: rgba(252, 211, 77, 0.2);
+        }
+
+        .tab.active {
+            background: var(--primary);
+            color: var(--background);
+        }
+
+        /* Menu Sections */
+        .menu-section {
+            display: none;
+            padding: 20px 0;
+        }
+
+        .menu-section.active {
+            display: block;
+        }
+
+        .menu-item {
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(252, 211, 77, 0.1);
+        }
+
+        .menu-item h3 {
+            color: var(--primary);
+            margin-bottom: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .price {
+            color: #ff0000;
+            font-weight: bold;
+            margin: 5px 0;
+        }
+
+        .menu-item p {
+            color: var(--text-light);
+            opacity: 0.9;
+            font-size: 0.9em;
+        }
+
+        .menu-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    padding: 15px 30px;
+    background: var(--primary);
+    color: var(--background);
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    z-index: 999;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    display: block; /* Ensure it's always visible */
+}
+
+        .menu-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .tabs {
+                flex-direction: column;
+                gap: 5px;
+            }
+            
+            .modal-content {
+                margin: 2% auto;
+                width: 95%;
+            }
+            
+            .menu-btn {
+                bottom: 20px;
+                right: 20px;
+                padding: 12px 25px;
+            }
+        }
+
+        /* Info Cards */
+        .info-section {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 2rem;
+            display: grid;
+            gap: 2rem;
+            grid-template-columns: 1fr;
+        }
+
+        .info-card {
+            text-align: center;
+            padding: 2rem;
+            border-radius: 1rem;
+        }
+
+        .info-card i {
+            color: var(--primary);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .info-card h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Footer */
+        footer {
+            padding: 2rem;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        .social-links {
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            margin: 0 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--primary);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            height: 100vh;
+            width: 70%;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            transition: right 0.3s ease;
+        }
+
+        .mobile-menu.active {
+            right: 0;
+        }
+
+        .mobile-menu a {
+            display: block;
+            color: var(--text-light);
+            text-decoration: none;
+            padding: 1rem 0;
+            font-size: 1.2rem;
+            border-bottom: 1px solid rgba(252, 211, 77, 0.3);
+        }
+
+        /* Media Queries */
+        @media (min-width: 768px) {
+
+            .nav-links {
+                display: flex;
+                gap: 2rem;
+            }
+
+            .menu-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .info-section {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .hero h1 {
+                font-size: 4rem;
+            }
+        }
+
+        .modern-link {
+    color: #ff0000; /* Red color */
+    text-decoration: none; /* Remove underline */
+    font-weight: bold; /* Make text bold */
+    transition: color 0.3s ease, transform 0.3s ease; /* Smooth transitions */
+    display: inline-block; /* For transform effects */
+}
+
+.modern-link:hover {
+    color: #cc0000; /* Darker red on hover */
+    transform: translateY(-2px); /* Slight lift effect on hover */
+}
+
+.modern-link::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: #ff0000; /* Red underline */
+    transition: width 0.3s ease; /* Animate the underline */
+}
+
+.modern-link:hover::after {
+    width: 100%; /* Full width underline on hover */
+}
+
+footer {
+        padding: 2rem;
+        text-align: center;
+        margin-top: 4rem;
+        background: rgba(28, 25, 23, 0.7);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        border-top: 1px solid rgba(252, 211, 77, 0.1);
     }
 
-    a:hover {
-      background: #ffcc00;
+    footer p {
+        color: var(--text-light);
+        margin-bottom: 1rem;
     }
 
-    footer {
-      position: absolute;
-      bottom: 20px;
-      color: #aaa;
-      font-size: 0.9rem;
+    .social-links {
+        margin: 1.5rem 0;
     }
-  </style>
+
+    .social-links a {
+        color: var(--text-light);
+        text-decoration: none;
+        margin: 0 1rem;
+        transition: color 0.3s ease;
+        font-size: 1.1rem;
+    }
+
+    .social-links a:hover {
+        color: var(--primary);
+    }
+
+    .developer-credit {
+        margin-top: 1.5rem;
+        font-size: 0.9rem;
+        opacity: 0.8;
+    }
+
+    .developer-credit a {
+        color: var(--primary);
+        text-decoration: none;
+        transition: all 0.3s ease;
+    }
+
+    .developer-credit a:hover {
+        color: #ff0000;
+        text-decoration: underline;
+    }
+    </style>
 </head>
 <body>
-  <div class="overlay"></div>
-  <h1>404</h1>
-  <p>Looks like this page doesn’t exist. Just like the promises we were given.</p>
-  <a href="mailto:info@kalandula.co.uk">Contact Support</a>
+    <header class="glass">
+        <nav class="nav-container">
+            <a href="#" class="logo">
+                <img src="./images/k-l.webp" alt="Kalandula Logo" class="logo-image">
+            </a>
+            <div class="nav-links">
+            </div>
+        </nav>
+    </header>
+    <section class="hero glass">
+       <video autoplay muted loop playsinline id="hero-video">
+    <source src="./images/kaladula-falls.mp4" type="video/mp4">
+</video>
 
-  <footer>&copy; 2025 Kalandula. Reality loading…</footer>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const video = document.getElementById('hero-video');
+
+        // Set playback rate for super slow motion
+        video.playbackRate = 0.25; // Adjust this value (0.25 = 25% speed)
+
+        // Ensure seamless looping
+        video.addEventListener('timeupdate', function() {
+            // Check if the video is near the end
+            if (this.currentTime > this.duration - 0.1) {
+                // Reset to the start without a visible jump
+                this.currentTime = 0;
+                this.play();
+            }
+        });
+
+        // Preload the video for smoother playback
+        video.preload = 'auto';
+
+        // Ensure the video starts playing
+        video.play().catch(error => {
+            console.log('Autoplay was prevented. User interaction is required to start playback.');
+        });
+    });
+</script>
+        <div class="hero-content">
+            <h1 class="hero-title">
+                <span class="red">K</span>ALANDUL<span class="red">A</span>
+            </h1>
+            <p class="hero-subtitle">Bar |<span class="red"> Grill</span> | Restaurant | Lounge</p>
+            <a href="https://app.tableo.com/r/agKC9wu" target="_blank" class="book-btn">BOOK NOW</a>
+        </div>
+    </section>
+    <!-- Gallery Section -->
+<div id="imageModal" class="modal">
+    <span class="modal-close">&times;</span>
+    <img class="modal-content" id="modalImage" src="" alt="Enlarged image">
+</div>
+
+<!-- First Marquee -->
+<div class="gallery-header">
+    <h2></h2>
+   <em style="background-color: #000;">Mouth watering African Cuisine</em>
+</div>
+<div class="gallery-container">
+    <div class="image-track track-1" id="track1">
+        <div class="gallery-item" onclick="openModal('./images/food-one.webp')"><img src="./images/food-one.webp" alt="Food-1"></div>
+        <div class="gallery-item" onclick="openModal('./images/food-2.webp")"><img src="./images/food-2.webp" alt="Food-2"></div>
+        <div class="gallery-item" onclick="openModal('./images/food-3.webp")"><img src="./images/food-3.webp" alt="Food-3"></div>
+        <div class="gallery-item" onclick="openModal('./images/food-4.webp")"><img src="./images/food-4.webp" alt="Food-4"></div>
+        <div class="gallery-item" onclick="openModal('./images/food-5.webp")"><img src="./images/food-5.webp" alt="Food-5"></div>
+        <div class="gallery-item" onclick="openModal('./images/food-6.webp")"><img src="./images/food-6.webp" alt="Food-6"></div>
+        <div class="gallery-item" onclick="openModal('./images/food-7.webp")"><img src="./images/food-7.webp" alt="Food-7"></div>
+        <div class="gallery-item" onclick="openModal('./images/food-8.webp")"><img src="./images/food-8.webp" alt="Food-8"></div>
+        <div class="gallery-item" onclick="openModal('./images/food-9.webp')"><img src="./images/food-9.webp" alt="Food-9"></div>
+
+        <!-- Clones -->
+        <div class="gallery-item" onclick="openModal('./images/food-one.webp')"><img src="./images/food-one.webp" alt="Food-1"></div>
+        <div class="gallery-item" onclick="openModal('./images/food-2.webp')"><img src="./images/food-2.webp" alt="Food-2"></div>
+        <div class="gallery-item" onclick="openModal('./images/food-3.webp')"><img src="./images/food-3.webp" alt="Food-3"></div>
+        <div class="gallery-item" onclick="openModal('./images/food-4.webp')"><img src="./images/food-4.webp" alt="Food-4"></div>
+        <div class="gallery-item" onclick="openModal('./images/food-5.webp')"><img src="./images/food-5.webp" alt="Food-5"></div>
+        <div class="gallery-item" onclick="openModal('./images/food-6.webp')"><img src="./images/food-6.webp" alt="Food-6"></div>
+        <div class="gallery-item" onclick="openModal('./images/food-7.webp')"><img src="./images/food-7.webp" alt="Food-7"></div>
+        <div class="gallery-item" onclick="openModal('./images/food-8.webp')"><img src="./images/food-8.webp" alt="Food-8"></div>
+        <div class="gallery-item" onclick="openModal('./images/food-9.webp')"><img src="./images/food-9.webp" alt="Food-9"></div>
+    </div>
+</div>
+    
+
+    <section id="about" class="about-section glass">
+    <div class="about-container">
+        <div class="about-content">
+            <div class="about-text">
+                <h2 class="section-title">
+                    <span class="red">A</span>BOUT US
+                </h2>
+                <p class="about-description">
+                    Nestled in the heart of Brixton, Kalandula brings the vibrant flavors of Angola 
+                    to London's diverse culinary scene. Named after Angola's majestic Kalandula Falls, 
+                    our restaurant is a celebration of Angolan-Portuguese fusion cuisine.
+                </p>
+                <p class="about-description">
+                    Our expert chefs blend traditional Angolan recipes with modern cooking techniques, 
+                    creating an unforgettable dining experience that honors our heritage while embracing 
+                    contemporary tastes.
+                </p>
+            </div>
+            <div class="about-stats">
+                <div class="stat-item">
+                    <span class="stat-number">5+</span>
+                    <span class="stat-label">Years of Excellence</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">1000+</span>
+                    <span class="stat-label">Happy Customers</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">30+</span>
+                    <span class="stat-label">Signature Dishes</span>
+                </div>
+            </div>
+        </div>
+       <div class="about-image-grid">
+            <img src="./images/Interior.webp" alt="Restaurant Interior" class="about-img">
+
+            <img src="./images/Chef.webp" alt="Chef at Work" class="about-img">
+        </div>
+    </div>
+    </div>
+</section>
+
+      <!-- Menu Modal -->
+<div id="menuModal" class="modal">
+  <div class="modal-content">
+    <span class="close-modal" id="closeModal">&times;</span>
+    <div class="tabs">
+      <!-- Dynamically generate tabs -->
+      <div class="tab active" onclick="switchTab('specials')">Today's Special</div>
+      <div class="tab" onclick="switchTab('main')">Main Menu</div>
+      <div class="tab" onclick="switchTab('drinks')">Drinks</div>
+      <div class="tab" onclick="switchTab('sides')">Sides</div>
+      <div class="tab" onclick="switchTab('sauces')">Sauces</div>
+    </div>
+
+    <!-- Today's Special Section -->
+    <div id="specials" class="menu-section active">
+      <div class="menu-item">
+        <h3>Today's Special</h3>
+
+        <p>Ask your server about our unique daily special, crafted by our chef using the freshest ingredients</p>
+      </div>
+    </div>
+
+    <!-- Main Menu Section -->
+    <div id="main" class="menu-section">
+      <div class="menu-item">
+        <h3>Chargrilled Chicken Wings (H)</h3>
+        <p class="price">£7.00</p>
+        <p>Perfectly marinated halal wings grilled on open flames, infused with Angolan-Portuguese spices</p>
+      </div>
+      <div class="menu-item">
+        <h3>Kalandula Soup</h3>
+        <p class="price">£6.50</p>
+        <p>Our signature hearty soup combining tender beef, kidney beans and fresh vegetables in a rich broth</p>
+      </div>
+      <div class="menu-item">
+        <h3>Half Chargrilled Chicken (H)</h3>
+        <p class="price">£8.00</p>
+        <p>Halal half chicken marinated in our secret blend of African spices, chargrilled until perfectly tender</p>
+      </div>
+      <div class="menu-item">
+        <h3>Whole Grilled Chicken (H)</h3>
+        <p class="price">£13.00</p>
+        <p>Family-sized halal whole chicken marinated and grilled, perfect for sharing</p>
+      </div>
+      <div class="menu-item">
+        <h3>Grilled Lamb Chops</h3>
+        <p class="price">£15.00</p>
+        <p>Succulent lamb chops marinated in herbs, grilled to your preference with a smoky finish</p>
+      </div>
+      <div class="menu-item">
+        <h3>Grilled Pork Ribs</h3>
+        <p class="price">£12.00</p>
+        <p>Fall-off-the-bone tender pork ribs, slow-cooked and finished on the grill with our special glaze</p>
+      </div>
+      <div class="menu-item">
+        <h3>Mixed Meat Platter</h3>
+        <p class="price">£23.00</p>
+        <p>Ultimate sharing platter featuring our finest selection of grilled meats - perfect for groups (Halal options available)</p>
+      </div>
+      <div class="menu-item">
+        <h3>Seasoned Grilled Fish (GF)</h3>
+        <p class="price">£12.00</p>
+        <p>Fresh catch of the day seasoned with African herbs and grilled to flaky perfection</p>
+      </div>
+      <div class="menu-item">
+        <h3>Sirloin Steak Grilled</h3>
+        <p class="price">£18.00</p>
+        <p>Prime cut sirloin steak grilled to your liking, seasoned with our house blend</p>
+      </div>
+      <div class="menu-item">
+        <h3>Bitoque Steak Meal</h3>
+        <p class="price">£13.00</p>
+        <p>Traditional Portuguese-style steak topped with a fried egg, served with golden fries, rice and fresh salad</p>
+      </div>
+      <div class="menu-item">
+        <h3>Golden Fried Fish (GF)</h3>
+        <p class="price">£10.00</p>
+        <p>Fresh fish in our special crispy coating, fried until golden brown</p>
+      </div>
+      <div class="menu-item">
+        <h3>Grilled Chorizo</h3>
+        <p class="price">£5.50</p>
+        <p>Authentic Portuguese spicy sausage, grilled until perfectly charred and juicy</p>
+      </div>
+      <div class="menu-item">
+        <h3>King Prawns (GF)</h3>
+        <p class="price">£12.00</p>
+        <p>Succulent king prawns marinated in African spices and slow cooked to perfection</p>
+      </div>
+      <div class="menu-item">
+        <h3>Pork Skewers</h3>
+        <p class="price">£4.00</p>
+        <p>Tender pork pieces marinated and grilled on skewers</p>
+      </div>
+      <div class="menu-item">
+        <h3>Beef Skewers</h3>
+        <p class="price">£4.00</p>
+        <p>Succulent beef pieces marinated and grilled on skewers</p>
+      </div>
+    </div>
+
+    <!-- Drinks Section -->
+    <div id="drinks" class="menu-section">
+      <div class="menu-item">
+        <h3>Premium Spirits</h3>
+        <p class="price">£5.00</p>
+        <p>Single shot of vodka, rum, whiskey, cognac or tequila (Double £9.00)</p>
+      </div>
+      <div class="menu-item">
+        <h3>Beer Selection</h3>
+        <p class="price">£2.80</p>
+        <p>Refreshing Sagres or Superblock beer</p>
+      </div>
+      <div class="menu-item">
+        <h3>Premium Beers</h3>
+        <p class="price">£3.50</p>
+        <p>Choose from Desperados, Guinness, or Heineken</p>
+      </div>
+      <div class="menu-item">
+        <h3>Draft Beer Pint</h3>
+        <p class="price">£4.00</p>
+        <p>Fresh draft pint of Sagres, Superbock, or Guinness</p>
+      </div>
+      <div class="menu-item">
+        <h3>Wine Bottle</h3>
+        <p class="price">£18.00</p>
+        <p>Choose from our selected rose, red, or white wines</p>
+      </div>
+      <div class="menu-item">
+        <h3>Sangria</h3>
+        <p class="price">£4.00</p>
+        <p>Glass of our house-made sangria (Jug £9.00)</p>
+      </div>
+      <div class="menu-item">
+        <h3>Cocktails</h3>
+        <p class="price">£5.00</p>
+        <p>Perfectly mixed gin & tonic or classic martini</p>
+      </div>
+      <div class="menu-item">
+        <h3>House Wine</h3>
+        <p class="price">£4.00</p>
+        <p>Glass of our selected house wine</p>
+      </div>
+      <div class="menu-item">
+        <h3>Sparkling Water</h3>
+        <p class="price">£2.50</p>
+        <p>Refreshing bottled sparkling mineral water</p>
+      </div>
+      <div class="menu-item">
+        <h3>Still Water</h3>
+        <p class="price">£2.50</p>
+        <p>Chilled bottled still mineral water</p>
+      </div>
+      <div class="menu-item">
+        <h3>Soft Drinks</h3>
+        <p class="price">£2.00</p>
+        <p>Coca-Cola, Diet Coke, Sprite, Fanta</p>
+      </div>
+      <div class="menu-item">
+        <h3>Juices</h3>
+        <p class="price">£2.50</p>
+        <p>Orange, Apple, Cranberry, or Pineapple juice</p>
+      </div>
+      <div class="menu-item">
+        <h3>Carbonated Drinks</h3>
+        <p class="price">£2.00</p>
+        <p>Tonic Water, Ginger Ale, Soda Water</p>
+      </div>
+      <div class="menu-item">
+        <h3>Red Bull</h3>
+        <p class="price">£2.00</p>
+        <p>Classic energy drink (Regular or Sugar-Free)</p>
+      </div>
+    </div>
+
+    <!-- Sides Section -->
+    <div id="sides" class="menu-section">
+      <div class="menu-item">
+        <h3>Brixton Fries (V, VG)</h3>
+        <p class="price">£3.00</p>
+        <p>Crispy fries seasoned with our special African-inspired spice blend</p>
+      </div>
+      <div class="menu-item">
+        <h3>Rice (V, VG, GF)</h3>
+        <p class="price">£3.00</p>
+        <p>Aromatic rice cooked to perfection</p>
+      </div>
+      <div class="menu-item">
+        <h3>Salad (V, VG, GF)</h3>
+        <p class="price">£3.00</p>
+        <p>Crisp mixed salad with our house dressing</p>
+      </div>
+      <div class="menu-item">
+        <h3>Fufu/Pounded Yam (V)</h3>
+        <p class="price">£10.00</p>
+        <p>Traditional African delicacy served with rich tomato sauce</p>
+      </div>
+      <div class="menu-item">
+        <h3>Bread (V)</h3>
+        <p class="price">£0.50</p>
+        <p>Freshly baked roll</p>
+      </div>
+    </div>
+
+    <!-- Sauces Section -->
+    <div id="sauces" class="menu-section">
+      <div class="menu-item">
+        <h3>Gindungo</h3>
+        <p>Our signature spicy sauce - an authentic Angolan recipe with a kick</p>
+      </div>
+      <div class="menu-item">
+        <h3>Ketchup</h3>
+        <p>Classic tomato sauce</p>
+      </div>
+      <div class="menu-item">
+        <h3>Mayo</h3>
+        <p>Smooth, creamy mayonnaise</p>
+      </div>
+      <div class="menu-item">
+        <h3>Garlic Mayo</h3>
+        <p>Our special garlic-infused mayonnaise</p>
+      </div>
+      <div class="menu-item">
+        <h3>BBQ</h3>
+        <p>Rich, smoky barbecue sauce</p>
+      </div>
+    </div>
+  </div>
+</div>
+    <button class="menu-btn" id="menuBtn">MENU</button>
+
+    <section class="info-section">
+        <div class="info-card glass">
+            <h3>Hours</h3>
+            <p>Mon-Thu: 11:30-11PM</p>
+            <p> Fri-Sun: 11:30-1am</p>
+        </div>
+        <div class="info-card glass">
+
+            <h3>Location</h3>
+            <a href="https://g.co/kgs/prx7tME" class="modern-link">5 Brixton Station Rd, London SW9 8PA</a>
+        </div>
+        <div class="info-card glass">
+            <a href="https://app.tableo.com/r/agKC9wu" target="_blank" class="book-btn">BOOK NOW</a>
+        </div>
+    </section>
+
+    <!-- Footer HTML -->
+<footer class="glass">
+    <p>©Kalandula 2025 ALL RIGHTS RESERVED®</p>
+    <div class="social-links">
+        <a href="https://www.instagram.com/kalandula" target="_blank">Instagram</a>
+    </div>
+    <p class="developer-credit">Developed by <a href="https://github.com/SadikMohamud" target="_blank">Snurm.dev</a></p>
+</footer>
+
+    <script>
+       // Mobile menu functionality
+const mobileMenuBtn = document.querySelector('.menu-btn');
+const mobileMenu = document.querySelector('.mobile-menu');
+
+mobileMenuBtn.addEventListener('click', () => {
+    mobileMenu.classList.toggle('active');
+});
+
+// Close mobile menu when clicking a link
+const mobileLinks = document.querySelectorAll('.mobile-menu a');
+mobileLinks.forEach(link => {
+    link.addEventListener('click', () => {
+        mobileMenu.classList.remove('active');
+    });
+});
+
+// Close mobile menu when clicking outside
+document.addEventListener('click', (e) => {
+    if (!mobileMenu.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+        mobileMenu.classList.remove('active');
+    }
+});
+
+         // Modal functionality
+         const menuModal = document.getElementById('menuModal');
+        const modalMenuBtn = document.getElementById('menuBtn');
+        const closeModal = document.getElementById('closeModal');
+
+        modalMenuBtn.onclick = function() {
+            menuModal.style.display = "block";
+            document.body.style.overflow = "hidden";
+        }
+
+        closeModal.onclick = function() {
+            menuModal.style.display = "none";
+            document.body.style.overflow = "auto";
+        }
+
+        window.onclick = function(event) {
+            if (event.target == menuModal) {
+                menuModal.style.display = "none";
+                document.body.style.overflow = "auto";
+            }
+        }
+
+        // Track controls
+const tracks = [
+    document.getElementById('track1'),
+    document.getElementById('track2'),
+    document.getElementById('track3')
+];
+const pauseBtn = document.getElementById('pauseBtn');
+const resumeBtn = document.getElementById('resumeBtn');
+
+pauseBtn.addEventListener('click', () => {
+    tracks.forEach(track => {
+        track.style.animationPlayState = 'paused';
+    });
+});
+
+resumeBtn.addEventListener('click', () => {
+    tracks.forEach(track => {
+        track.style.animationPlayState = 'running';
+    });
+});
+
+// Modal functionality
+const modal = document.getElementById('imageModal');
+const modalImg = document.getElementById('modalImage');
+const closeBtn = document.getElementsByClassName('modal-close')[0];
+
+function openModal(imgSrc) {
+    modal.style.display = 'block';
+    modalImg.src = imgSrc;
+}
+
+closeBtn.onclick = function() {
+    modal.style.display = 'none';
+}
+
+modal.onclick = function(e) {
+    if (e.target === modal) {
+        modal.style.display = 'none';
+    }
+}
+
+        // Tab switching functionality
+        function switchTab(tabName) {
+            // Hide all menu sections
+            const menuSections = document.getElementsByClassName('menu-section');
+            for (let section of menuSections) {
+                section.classList.remove('active');
+            }
+            
+            // Deactivate all tabs
+            const tabs = document.getElementsByClassName('tab');
+            for (let tab of tabs) {
+                tab.classList.remove('active');
+            }
+            
+            // Show selected section and activate tab
+            document.getElementById(tabName).classList.add('active');
+            event.target.classList.add('active');
+        }
+
+    </script>
 </body>
 </html>
