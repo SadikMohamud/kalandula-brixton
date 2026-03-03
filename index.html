@@ -787,9 +787,69 @@ footer {
         color: #ff0000;
         text-decoration: underline;
     }
-    </style>
+    
+    /* =========================
+       Menu Grid (JS-rendered)
+       Scoped to #menuModal only
+    ========================= */
+    #menuModal #menuGridMount{
+        padding: 18px;
+    }
+    #menuModal .menu-grid{
+        display: grid;
+        gap: 18px;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    }
+    #menuModal .menu-section-card{
+        background: rgba(255,255,255,0.98);
+        border-radius: 14px;
+        overflow: hidden;
+        box-shadow: 0 10px 28px rgba(0,0,0,0.18);
+    }
+    #menuModal .menu-section-header{
+        padding: 12px 14px;
+        color: #fff;
+        font-weight: 800;
+        letter-spacing: 0.02em;
+    }
+    #menuModal .menu-items{
+        padding: 10px 14px 14px;
+    }
+    #menuModal .menu-item-row{
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 10px 0;
+        border-bottom: 1px solid rgba(0,0,0,0.08);
+    }
+    #menuModal .menu-item-row:last-child{
+        border-bottom: none;
+    }
+    #menuModal .menu-item-title{
+        margin: 0;
+        font-size: 14px;
+        font-weight: 800;
+        color: #111;
+    }
+    #menuModal .menu-item-desc{
+        margin: 6px 0 0;
+        font-size: 12px;
+        line-height: 1.4;
+        color: rgba(0,0,0,0.68);
+    }
+    #menuModal .menu-item-price{
+        margin: 0;
+        font-size: 13px;
+        font-weight: 900;
+        color: #B11226; /* matches MENU_MODEL.colors.primary */
+        white-space: nowrap;
+    }
+
+</style>
 </head>
-<body>
+
+    <body>
     <header class="glass">
         <nav class="nav-container">
             <a href="#" class="logo">
@@ -921,231 +981,10 @@ footer {
 <div id="menuModal" class="modal">
   <div class="modal-content">
     <span class="close-modal" id="closeModal">&times;</span>
-    <div class="tabs">
-      <!-- Dynamically generate tabs -->
-      <div class="tab active" onclick="switchTab('specials')">Today's Special</div>
-      <div class="tab" onclick="switchTab('main')">Main Menu</div>
-      <div class="tab" onclick="switchTab('drinks')">Drinks</div>
-      <div class="tab" onclick="switchTab('sides')">Sides</div>
-      <div class="tab" onclick="switchTab('sauces')">Sauces</div>
-    </div>
-
-    <!-- Today's Special Section -->
-    <div id="specials" class="menu-section active">
-      <div class="menu-item">
-        <h3>Today's Special</h3>
-
-        <p>Ask your server about our unique daily special, crafted by our chef using the freshest ingredients</p>
-      </div>
-    </div>
-
-    <!-- Main Menu Section -->
-    <div id="main" class="menu-section">
-      <div class="menu-item">
-        <h3>Chargrilled Chicken Wings (H)</h3>
-        <p class="price">£7.00</p>
-        <p>Perfectly marinated wings grilled on open flames, infused with Angolan-Portuguese spices</p>
-      </div>
-      <div class="menu-item">
-        <h3>Kalandula Soup</h3>
-        <p class="price">£6.50</p>
-        <p>Our signature hearty soup combining tender beef, kidney beans and fresh vegetables in a rich broth</p>
-      </div>
-      <div class="menu-item">
-        <h3>Half Chargrilled Chicken (H)</h3>
-        <p class="price">£8.00</p>
-        <p> half chicken marinated in our secret blend of African spices, chargrilled until perfectly tender</p>
-      </div>
-      <div class="menu-item">
-        <h3>Whole Grilled Chicken (H)</h3>
-        <p class="price">£13.00</p>
-        <p>Family-sized whole chicken marinated and grilled, perfect for sharing</p>
-      </div>
-      <div class="menu-item">
-        <h3>Grilled Lamb Chops</h3>
-        <p class="price">£15.00</p>
-        <p>Succulent lamb chops marinated in herbs, grilled to your preference with a smoky finish</p>
-      </div>
-      <div class="menu-item">
-        <h3>Grilled Pork Ribs</h3>
-        <p class="price">£12.00</p>
-        <p>Fall-off-the-bone tender pork ribs, slow-cooked and finished on the grill with our special glaze</p>
-      </div>
-      <div class="menu-item">
-        <h3>Mixed Meat Platter</h3>
-        <p class="price">£23.00</p>
-        <p>Ultimate sharing platter featuring our finest selection of grilled meats - perfect for groups (Halal options available)</p>
-      </div>
-      <div class="menu-item">
-        <h3>Seasoned Grilled Fish (GF)</h3>
-        <p class="price">£12.00</p>
-        <p>Fresh catch of the day seasoned with African herbs and grilled to flaky perfection</p>
-      </div>
-      <div class="menu-item">
-        <h3>Sirloin Steak Grilled</h3>
-        <p class="price">£18.00</p>
-        <p>Prime cut sirloin steak grilled to your liking, seasoned with our house blend</p>
-      </div>
-      <div class="menu-item">
-        <h3>Bitoque Steak Meal</h3>
-        <p class="price">£13.00</p>
-        <p>Traditional Portuguese-style steak topped with a fried egg, served with golden fries, rice and fresh salad</p>
-      </div>
-      <div class="menu-item">
-        <h3>Golden Fried Fish (GF)</h3>
-        <p class="price">£10.00</p>
-        <p>Fresh fish in our special crispy coating, fried until golden brown</p>
-      </div>
-      <div class="menu-item">
-        <h3>Grilled Chorizo</h3>
-        <p class="price">£5.50</p>
-        <p>Authentic Portuguese spicy sausage, grilled until perfectly charred and juicy</p>
-      </div>
-      <div class="menu-item">
-        <h3>King Prawns (GF)</h3>
-        <p class="price">£12.00</p>
-        <p>Succulent king prawns marinated in African spices and slow cooked to perfection</p>
-      </div>
-      <div class="menu-item">
-        <h3>Pork Skewers</h3>
-        <p class="price">£4.00</p>
-        <p>Tender pork pieces marinated and grilled on skewers</p>
-      </div>
-      <div class="menu-item">
-        <h3>Beef Skewers</h3>
-        <p class="price">£4.00</p>
-        <p>Succulent beef pieces marinated and grilled on skewers</p>
-      </div>
-    </div>
-
-    <!-- Drinks Section -->
-    <div id="drinks" class="menu-section">
-      <div class="menu-item">
-        <h3>Premium Spirits</h3>
-        <p class="price">£5.00</p>
-        <p>Single shot of vodka, rum, whiskey, cognac or tequila (Double £9.00)</p>
-      </div>
-      <div class="menu-item">
-        <h3>Beer Selection</h3>
-        <p class="price">£2.80</p>
-        <p>Refreshing Sagres or Superblock beer</p>
-      </div>
-      <div class="menu-item">
-        <h3>Premium Beers</h3>
-        <p class="price">£3.50</p>
-        <p>Choose from Desperados, Guinness, or Heineken</p>
-      </div>
-      <div class="menu-item">
-        <h3>Draft Beer Pint</h3>
-        <p class="price">£4.00</p>
-        <p>Fresh draft pint of Sagres, Superbock, or Guinness</p>
-      </div>
-      <div class="menu-item">
-        <h3>Wine Bottle</h3>
-        <p class="price">£18.00</p>
-        <p>Choose from our selected rose, red, or white wines</p>
-      </div>
-      <div class="menu-item">
-        <h3>Sangria</h3>
-        <p class="price">£4.00</p>
-        <p>Glass of our house-made sangria (Jug £9.00)</p>
-      </div>
-      <div class="menu-item">
-        <h3>Cocktails</h3>
-        <p class="price">£5.00</p>
-        <p>Perfectly mixed gin & tonic or classic martini</p>
-      </div>
-      <div class="menu-item">
-        <h3>House Wine</h3>
-        <p class="price">£4.00</p>
-        <p>Glass of our selected house wine</p>
-      </div>
-      <div class="menu-item">
-        <h3>Sparkling Water</h3>
-        <p class="price">£2.50</p>
-        <p>Refreshing bottled sparkling mineral water</p>
-      </div>
-      <div class="menu-item">
-        <h3>Still Water</h3>
-        <p class="price">£2.50</p>
-        <p>Chilled bottled still mineral water</p>
-      </div>
-      <div class="menu-item">
-        <h3>Soft Drinks</h3>
-        <p class="price">£2.00</p>
-        <p>Coca-Cola, Diet Coke, Sprite, Fanta</p>
-      </div>
-      <div class="menu-item">
-        <h3>Juices</h3>
-        <p class="price">£2.50</p>
-        <p>Orange, Apple, Cranberry, or Pineapple juice</p>
-      </div>
-      <div class="menu-item">
-        <h3>Carbonated Drinks</h3>
-        <p class="price">£2.00</p>
-        <p>Tonic Water, Ginger Ale, Soda Water</p>
-      </div>
-      <div class="menu-item">
-        <h3>Red Bull</h3>
-        <p class="price">£2.00</p>
-        <p>Classic energy drink (Regular or Sugar-Free)</p>
-      </div>
-    </div>
-
-    <!-- Sides Section -->
-    <div id="sides" class="menu-section">
-      <div class="menu-item">
-        <h3>Brixton Fries (V, VG)</h3>
-        <p class="price">£3.00</p>
-        <p>Crispy fries seasoned with our special African-inspired spice blend</p>
-      </div>
-      <div class="menu-item">
-        <h3>Rice (V, VG, GF)</h3>
-        <p class="price">£3.00</p>
-        <p>Aromatic rice cooked to perfection</p>
-      </div>
-      <div class="menu-item">
-        <h3>Salad (V, VG, GF)</h3>
-        <p class="price">£3.00</p>
-        <p>Crisp mixed salad with our house dressing</p>
-      </div>
-      <div class="menu-item">
-        <h3>Fufu/Pounded Yam (V)</h3>
-        <p class="price">£10.00</p>
-        <p>Traditional African delicacy served with rich tomato sauce</p>
-      </div>
-      <div class="menu-item">
-        <h3>Bread (V)</h3>
-        <p class="price">£0.50</p>
-        <p>Freshly baked roll</p>
-      </div>
-    </div>
-
-    <!-- Sauces Section -->
-    <div id="sauces" class="menu-section">
-      <div class="menu-item">
-        <h3>Gindungo</h3>
-        <p>Our signature spicy sauce - an authentic Angolan recipe with a kick</p>
-      </div>
-      <div class="menu-item">
-        <h3>Ketchup</h3>
-        <p>Classic tomato sauce</p>
-      </div>
-      <div class="menu-item">
-        <h3>Mayo</h3>
-        <p>Smooth, creamy mayonnaise</p>
-      </div>
-      <div class="menu-item">
-        <h3>Garlic Mayo</h3>
-        <p>Our special garlic-infused mayonnaise</p>
-      </div>
-      <div class="menu-item">
-        <h3>BBQ</h3>
-        <p>Rich, smoky barbecue sauce</p>
-      </div>
-    </div>
+    <div id="menuGridMount"></div>
   </div>
 </div>
+
     <button class="menu-btn" id="menuBtn">MENU</button>
 
     <section class="info-section">
@@ -1173,8 +1012,7 @@ footer {
     </div>
     <p class="developer-credit">Developed by <a href="https://github.com/SadikMohamud" target="_blank">Snurm.dev © </a></p>
 </footer>
-
-    <script>
+            <script>
        // Mobile menu functionality
 const mobileMenuBtn = document.querySelector('.menu-btn');
 const mobileMenu = document.querySelector('.mobile-menu');
@@ -1202,8 +1040,122 @@ document.addEventListener('click', (e) => {
          const menuModal = document.getElementById('menuModal');
         const modalMenuBtn = document.getElementById('menuBtn');
         const closeModal = document.getElementById('closeModal');
+        // =========================
+        // Menu model (data + colors)
+        // =========================
+        const MENU_MODEL = {
+            colors: {
+                primary: "#B11226",
+                secondary: "#6A1B4D",
+                accent: "#D9902F"
+            },
+            sections: [
+                {
+                    title: "Starters",
+                    color: "accent",
+                    items: [
+                        { title: "Rissóis / Prawn Cake", price: 2.00 },
+                        { title: "Pastéis de Bacalhau / Fish Cake", price: 2.00 },
+                        { title: "Soup of the day", price: 7.00 },
+                        { title: "Fried Plantain", price: 4.00 },
+                        { title: "Aubergine Stuffed With Chickpea", price: 4.99 },
+                        { title: "Beef / Pork Skewers", price: 5.00 },
+                        { title: "Portuguese Chorizo", price: 6.00, description: "Cooked in olive oil with white wine sauce served with bread." },
+                        { title: "Taba - Smoked Bo Lamb", price: 11.99 },
+                        { title: "Garlic King Prawns", price: 12.50, description: "In butter sauce, served with bread." }
+                    ]
+                },
+                {
+                    title: "Mains",
+                    color: "primary",
+                    items: [
+                        { title: "Pork Ribs", price: 12.99, description: "Served with chips or rice." },
+                        { title: "Golden Fried Fish", price: 13.99, description: "Served with rice and salad / beans." },
+                        { title: "Bitoque", price: 14.99, description: "Steak, with rice, chips and an egg." },
+                        { title: "Chicken Breast With Cognac Sauce", price: 14.99, description: "Served with vegetables." },
+                        { title: "Half Chicken", price: 15.00, description: "Served with chips and salad." },
+                        { title: "Makayabu", price: 15.99, description: "Salty cod cooked with onions, peppers and garlic sauce. Served with kwanga/plantain with greens." },
+                        { title: "Fungi/Fufu", price: 21.00 }
+                    ]
+                },
+                {
+                    title: "Vegetarian / Vegan",
+                    color: "secondary",
+                    items: [
+                        { title: "Spinach With Garlic", price: 7.00 },
+                        { title: "Caesar Salad", price: 8.00 },
+                        { title: "Tuna Salad", price: 8.00 },
+                        { title: "Chickpea and Aubergine Curry", price: 12.00 },
+                        { title: "Salmon and Avocado Salad", price: 16.00 },
+                        { title: "Vegan Special", price: 16.00, description: "Kassava leafs with plantain, lassawa roots and sweet potatoes" }
+                    ]
+                },
+                {
+                    title: "Extras",
+                    color: "accent",
+                    items: [
+                        { title: "Beans", price: 3.50 },
+                        { title: "Chips", price: 3.50 },
+                        { title: "Kassava Leafs", price: 3.50 },
+                        { title: "Kwanga", price: 3.50 },
+                        { title: "Salads", price: 3.50 },
+                        { title: "Savoury Rice", price: 3.50 }
+                    ]
+                },
+                {
+                    title: "Desserts",
+                    color: "secondary",
+                    items: [
+                        { title: "Mikate", price: 2.00 },
+                        { title: "Rice Pudding", price: 2.99 },
+                        { title: "Lemon Mousse", price: 3.50 },
+                        { title: "Pudim", price: 3.50 },
+                        { title: "Chocolate Cake", price: 4.50 },
+                        { title: "Baba de Caramelo", price: 4.00 },
+                        { title: "Velvet Cake", price: 4.50 }
+                    ]
+                }
+            ]
+        };
+
+        function formatGBP(n) {
+            return "£" + n.toFixed(2);
+        }
+
+        function renderGridMenu() {
+            const mount = document.getElementById("menuGridMount");
+            if (!mount) return;
+
+            mount.innerHTML = `
+              <div class="menu-grid">
+                ${MENU_MODEL.sections.map(section => {
+                    const accent = MENU_MODEL.colors[section.color] || MENU_MODEL.colors.accent;
+                    return `
+                      <div class="menu-section-card">
+                        <div class="menu-section-header" style="background:${accent}">
+                          ${section.title}
+                        </div>
+                        <div class="menu-items">
+                          ${section.items.map(item => `
+                            <div class="menu-item-row">
+                              <div style="min-width:0">
+                                <p class="menu-item-title">${item.title}</p>
+                                ${item.description ? `<p class="menu-item-desc">${item.description}</p>` : ``}
+                              </div>
+                              <p class="menu-item-price">${formatGBP(item.price)}</p>
+                            </div>
+                          `).join("")}
+                        </div>
+                      </div>
+                    `;
+                }).join("")}
+              </div>
+            `;
+        }
+
 
         modalMenuBtn.onclick = function() {
+            renderGridMenu();
             menuModal.style.display = "block";
             document.body.style.overflow = "hidden";
         }
@@ -1219,8 +1171,7 @@ document.addEventListener('click', (e) => {
                 document.body.style.overflow = "auto";
             }
         }
-
-        // Track controls
+                        // Track controls
 const tracks = [
     document.getElementById('track1'),
     document.getElementById('track2'),
