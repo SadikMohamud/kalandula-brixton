@@ -1,1236 +1,163 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-GB">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kalandula Bar & Grill</title>
-    <style>
-        :root {
-            --primary: #fcd34d;
-            --primary-dark: #b45309;
-            --background: #1c1917;
-            --text-light: #fef3c7;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        body {
-    background-color: var(--background);
-    color: var(--text-light);
-    line-height: 1.6;
-    background-image: url('./images/samakaka.webp');
-    background-size: cover;          /* This stretches the image */
-    background-position: center;     /* Centers the image */
-    background-attachment: fixed;    /* Keeps image fixed during scroll */
-    background-repeat: no-repeat;    /* Prevents image repetition */
-    min-height: 100vh;              /* Ensures full viewport height */
-    margin: 0;                      /* Removes default margin */
-}
-        /* Glassmorphism */
-        .glass {
-            background: rgba(224, 223, 223, 0.3);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-        }
-
-        /* Header Styles */
-        header {
-            position: fixed;
-            width: 100%;
-            z-index: 1000;
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 1rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-    display: flex;
-    align-items: center;
-    padding: 5px 0;
-}
-
-.logo-image {
-    height: 50px;  /* Adjust this value to match your logo's desired height */
-    width: auto;   /* This maintains the aspect ratio */
-    object-fit: contain;
-}
-        .nav-links {
-            display: none;
-        }
-
-        .nav-links a {
-            color: var(--text-light);
-            text-decoration: none;
-            padding: 0.5rem 1rem;
-            transition: color 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            color: var(--primary);
-        }
-
-         .menu-btn {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    padding: 15px 30px;
-    font-size: 24px;
-    font-weight: bold;
-    text-align: center;
-    text-decoration: none;
-    color: #fff;
-    background-color: #FF0000;
-    border: 2px solid #000;
-    border-radius: 10px;
-    box-shadow: 5px 5px 0px #FCD34D;
-    transition: all 0.3s ease;
-    cursor: pointer;
-    z-index: 999;
-}
-
-.menu-btn:hover {
-    background-color: #070707;
-    color: #FCD34D;
-    border: 2px solid #fbfbfb;
-    box-shadow: 5px 5px 0px #FF0000;
-}
-
-.menu-btn:active {
-    background-color: #fcf414;
-    box-shadow: none;
-    transform: translateY(4px);
-}
-        /* Hero Section */
-        .hero {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            position: relative;
-            padding: 2rem;
-            overflow: hidden;  /* Added for video containment */
-        }
-
-        #hero-video {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: -1;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-        }
-
-        .hero h1 {
-            font-size: 3rem;
-            color: var(--primary);
-            margin-bottom: 1rem;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-        }
-
-
-
-        .red {
-            color: #ff0000;
-        }
-
-        /* Focus-in-contract-bck Animation */
-@keyframes focus-in-contract-bck {
-    0% {
-        letter-spacing: 1em;
-        transform: translateZ(300px);
-        filter: blur(12px);
-        opacity: 0;
-    }
-    100% {
-        transform: translateZ(12px);
-        filter: blur(0);
-        opacity: 1;
-    }
-}
-
-.hero-title {
-    font-size: 4rem;
-    color: var(--text-light);
-    margin-bottom: 1rem;
-    letter-spacing: 2px;
-    animation: focus-in-contract-bck 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-}
-
-        .hero-subtitle {
-            font-size: 1.4rem;
-            margin-bottom: 2rem;
-            letter-spacing: 1px;
-        }
-
-          .book-btn {
-            display: flex;
-            font-size: 24px;
-    font-weight: bold;
-    text-align: center;
-    text-decoration: none;
-    color: #fff;
-  justify-content: space-around;
-  align-items: center;
-  padding: 1em 0em 1em 1em;
-  background-color: #FF0000;
-  cursor: pointer;
-  box-shadow: 4px 6px 0px #FCD34D;
-  border: 4px solid black;
-  border-radius: 15px;
-  position: relative;
-  overflow: hidden;
-  z-index: 100;
-  transition: box-shadow 250ms, transform 250ms, filter 50ms;
-        }
-
-        .book-btn:hover {
-            transform: translate(2px, 2px);
-  box-shadow: 2px 3px 0px #ff0000;
-  border:4px solid #fff;
-  color: #FCD34D;
-        }
-
-        .book-btn::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-color: rgb(6, 6, 6);
-  z-index: -1;
-  transform: translateX(-100%);
-  transition: transform 250ms;
-}
-.book-btn:hover::after {
-  transform: translateX(0);
-}
-
-        /* Gallery Section Styles */
-.gallery-header {
-    text-align: center;
-    margin: 4rem 0 2rem;
-    color: var(--text-light);
-}
-
-.gallery-header h2 {
-    font-size: 2.5rem;
-    color: var(--primary);
-    margin-bottom: 0.5rem;
-}
-
-.gallery-header em {
-    font-size: 1.2rem;
-    color: var(--text-light);
-    opacity: 0.8;
-}
-
-.gallery-container {
-    overflow: hidden;
-    position: relative;
-    margin: 2rem 0;
-    padding: 1rem 0;
-}
-
-.image-track {
-    display: flex;
-    gap: 1rem;
-    width: max-content;
-    animation: scroll 30s linear infinite;
-}
-
-@keyframes scroll {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
-}
-
-.gallery-item {
-    flex: 0 0 auto;
-    width: 300px;
-    height: 200px;
-    border-radius: 10px;
-    overflow: hidden;
-    cursor: pointer;
-    transition: transform 0.3s ease;
-}
-
-.gallery-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.gallery-item:hover {
-    transform: scale(1.05);
-}
-
-.controls {
-    text-align: center;
-    margin: 2rem 0;
-}
-
-.btn {
-    background-color: var(--primary);
-    color: var(--background);
-    padding: 0.75rem 1.5rem;
-    border: none;
-    border-radius: 25px;
-    cursor: pointer;
-    font-weight: bold;
-    margin: 0 0.5rem;
-    transition: all 0.3s ease;
-}
-
-.btn:hover {
-    background-color: var(--primary-dark);
-}
-
-        .about-section {
-    padding: 80px 0;
-    position: relative;
-    overflow: hidden;
-}
-
-.about-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 40px;
-    align-items: center;
-}
-
-.section-title {
-    font-size: 2.5rem;
-    margin-bottom: 30px;
-    color: var(--text-light);
-    letter-spacing: 2px;
-}
-
-.red {
-    color: #ff0000;
-}
-
-.about-description {
-    color: var(--text-light);
-    margin-bottom: 20px;
-    line-height: 1.8;
-    font-size: 1.1rem;
-}
-
-.about-stats {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-    margin-top: 40px;
-}
-
-.stat-item {
-    text-align: center;
-    padding: 20px;
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 10px;
-    backdrop-filter: blur(5px);
-    transition: transform 0.3s ease;
-}
-
-.stat-item:hover {
-    transform: translateY(-5px);
-}
-
-.stat-number {
-    display: block;
-    font-size: 2.5rem;
-    font-weight: bold;
-    color: var(--primary);
-    margin-bottom: 5px;
-}
-
-.stat-label {
-    color: var(--text-light);
-    font-size: 0.9rem;
-}
-
-.about-image-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-    position: relative;
-}
-
-.about-img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 10px;
-    transition: transform 0.3s ease;
-}
-
-.about-img:hover {
-    transform: scale(1.05);
-}
-
-/* Make the first image span two columns */
-.about-img:first-child {
-    grid-column: 1 / -1;
-    height: 300px;
-}
-
-/* Responsive Design */
-@media (max-width: 968px) {
-    .about-container {
-        grid-template-columns: 1fr;
-    }
-
-    .about-stats {
-        grid-template-columns: repeat(3, 1fr);
-    }
-
-    .section-title {
-        font-size: 2rem;
-    }
-}
-
-@media (max-width: 768px) {
-    .about-stats {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .about-image-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .about-img:first-child {
-        height: 200px;
-    }
-}
-
-@media (max-width: 480px) {
-    .about-stats {
-        grid-template-columns: 1fr;
-    }
-
-    .stat-item {
-        padding: 15px;
-    }
-}
-
-/* Image Modal Styles */
-#imageModal {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.9);
-    z-index: 1000;
-    overflow-y: auto;
-}
-
-#imageModal .modal-content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    max-width: 90%;
-    max-height: 90%;
-    border-radius: 10px;
-}
-
-.modal-close {
-    position: absolute;
-    top: 20px;
-    right: 30px;
-    color: var(--primary);
-    font-size: 40px;
-    cursor: pointer;
-    transition: color 0.3s ease;
-}
-
-.modal-close:hover {
-    color: #ff0000;
-}
-
-         /* Modal Styles */
-         .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
-            z-index: 1000;
-            overflow-y: auto;
-        }
-
-        .modal-content {
-            background: rgba(28, 25, 23, 0.85);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            margin: 5% auto;
-            width: 90%;
-            max-width: 800px;
-            border-radius: 15px;
-            border: 1px solid rgba(252, 211, 77, 0.1);
-            position: relative;
-            padding: 20px;
-            color: var(--text-light);
-        }
-
-        .close-modal {
-            position: absolute;
-            right: 20px;
-            top: 10px;
-            font-size: 30px;
-            color: var(--primary);
-            cursor: pointer;
-            transition: color 0.3s ease;
-        }
-
-        .close-modal:hover {
-            color: #ff0000;
-        }
-
-        /* Tabs Styling */
-        .tabs {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 20px;
-            border-bottom: 1px solid rgba(252, 211, 77, 0.2);
-            padding-bottom: 10px;
-        }
-
-        .tab {
-            padding: 10px 20px;
-            cursor: pointer;
-            color: var(--text-light);
-            border-radius: 5px;
-            transition: all 0.3s ease;
-            background: rgba(252, 211, 77, 0.1);
-        }
-
-        .tab:hover {
-            background: rgba(252, 211, 77, 0.2);
-        }
-
-        .tab.active {
-            background: var(--primary);
-            color: var(--background);
-        }
-
-        /* Menu Sections */
-        .menu-section {
-            display: none;
-            padding: 20px 0;
-        }
-
-        .menu-section.active {
-            display: block;
-        }
-
-        .menu-item {
-            margin-bottom: 25px;
-            padding-bottom: 15px;
-            border-bottom: 1px solid rgba(252, 211, 77, 0.1);
-        }
-
-        .menu-item h3 {
-            color: var(--primary);
-            margin-bottom: 5px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .price {
-            color: #ff0000;
-            font-weight: bold;
-            margin: 5px 0;
-        }
-
-        .menu-item p {
-            color: var(--text-light);
-            opacity: 0.9;
-            font-size: 0.9em;
-        }
-
-        .menu-btn {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    padding: 15px 30px;
-    background: var(--primary);
-    color: var(--background);
-    border: none;
-    border-radius: 25px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: all 0.3s ease;
-    z-index: 999;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-    display: block; /* Ensure it's always visible */
-}
-
-        .menu-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
-        }
-
-        /* Responsive adjustments */
-        @media (max-width: 768px) {
-            .tabs {
-                flex-direction: column;
-                gap: 5px;
-            }
-            
-            .modal-content {
-                margin: 2% auto;
-                width: 95%;
-            }
-            
-            .menu-btn {
-                bottom: 20px;
-                right: 20px;
-                padding: 12px 25px;
-            }
-        }
-
-        /* Info Cards */
-        .info-section {
-            max-width: 1200px;
-            margin: 4rem auto;
-            padding: 2rem;
-            display: grid;
-            gap: 2rem;
-            grid-template-columns: 1fr;
-        }
-
-        .info-card {
-            text-align: center;
-            padding: 2rem;
-            border-radius: 1rem;
-        }
-
-        .info-card i {
-            color: var(--primary);
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .info-card h3 {
-            color: var(--primary);
-            margin-bottom: 0.5rem;
-        }
-
-        /* Footer */
-        footer {
-            padding: 2rem;
-            text-align: center;
-            margin-top: 4rem;
-        }
-
-        .social-links {
-            margin-top: 1rem;
-        }
-
-        .social-links a {
-            color: var(--text-light);
-            text-decoration: none;
-            margin: 0 0.5rem;
-            transition: color 0.3s ease;
-        }
-
-        .social-links a:hover {
-            color: var(--primary);
-        }
-
-        /* Mobile Menu */
-        .mobile-menu {
-            position: fixed;
-            top: 0;
-            right: -100%;
-            height: 100vh;
-            width: 70%;
-            background: rgba(0, 0, 0, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 2rem;
-            transition: right 0.3s ease;
-        }
-
-        .mobile-menu.active {
-            right: 0;
-        }
-
-        .mobile-menu a {
-            display: block;
-            color: var(--text-light);
-            text-decoration: none;
-            padding: 1rem 0;
-            font-size: 1.2rem;
-            border-bottom: 1px solid rgba(252, 211, 77, 0.3);
-        }
-
-        /* Media Queries */
-        @media (min-width: 768px) {
-
-            .nav-links {
-                display: flex;
-                gap: 2rem;
-            }
-
-            .menu-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .info-section {
-                grid-template-columns: repeat(3, 1fr);
-            }
-
-            .hero h1 {
-                font-size: 4rem;
-            }
-        }
-
-        .modern-link {
-    color: #ff0000; /* Red color */
-    text-decoration: none; /* Remove underline */
-    font-weight: bold; /* Make text bold */
-    transition: color 0.3s ease, transform 0.3s ease; /* Smooth transitions */
-    display: inline-block; /* For transform effects */
-}
-
-.modern-link:hover {
-    color: #cc0000; /* Darker red on hover */
-    transform: translateY(-2px); /* Slight lift effect on hover */
-}
-
-.modern-link::after {
-    content: '';
-    display: block;
-    width: 0;
-    height: 2px;
-    background: #ff0000; /* Red underline */
-    transition: width 0.3s ease; /* Animate the underline */
-}
-
-.modern-link:hover::after {
-    width: 100%; /* Full width underline on hover */
-}
-
-footer {
-        padding: 2rem;
-        text-align: center;
-        margin-top: 4rem;
-        background: rgba(28, 25, 23, 0.7);
-        backdrop-filter: blur(8px);
-        -webkit-backdrop-filter: blur(8px);
-        border-top: 1px solid rgba(252, 211, 77, 0.1);
-    }
-
-    footer p {
-        color: var(--text-light);
-        margin-bottom: 1rem;
-    }
-
-    .social-links {
-        margin: 1.5rem 0;
-    }
-
-    .social-links a {
-        color: var(--text-light);
-        text-decoration: none;
-        margin: 0 1rem;
-        transition: color 0.3s ease;
-        font-size: 1.1rem;
-    }
-
-    .social-links a:hover {
-        color: var(--primary);
-    }
-
-    .developer-credit {
-        margin-top: 1.5rem;
-        font-size: 0.9rem;
-        opacity: 0.8;
-    }
-
-    .developer-credit a {
-        color: var(--primary);
-        text-decoration: none;
-        transition: all 0.3s ease;
-    }
-
-    .developer-credit a:hover {
-        color: #ff0000;
-        text-decoration: underline;
-    }
-    
-    /* =========================
-       Menu Grid (JS-rendered)
-       Scoped to #menuModal only
-    ========================= */
-    #menuModal #menuGridMount{
-        padding: 18px;
-    }
-    #menuModal .menu-grid{
-        display: grid;
-        gap: 18px;
-        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    }
-    #menuModal .menu-section-card{
-        background: rgba(255,255,255,0.98);
-        border-radius: 14px;
-        overflow: hidden;
-        box-shadow: 0 10px 28px rgba(0,0,0,0.18);
-    }
-    #menuModal .menu-section-header{
-        padding: 12px 14px;
-        color: #fff;
-        font-weight: 800;
-        letter-spacing: 0.02em;
-    }
-    #menuModal .menu-items{
-        padding: 10px 14px 14px;
-    }
-    #menuModal .menu-item-row{
-        display: flex;
-        align-items: flex-start;
-        justify-content: space-between;
-        gap: 12px;
-        padding: 10px 0;
-        border-bottom: 1px solid rgba(0,0,0,0.08);
-    }
-    #menuModal .menu-item-row:last-child{
-        border-bottom: none;
-    }
-    #menuModal .menu-item-title{
-        margin: 0;
-        font-size: 14px;
-        font-weight: 800;
-        color: #111;
-    }
-    #menuModal .menu-item-desc{
-        margin: 6px 0 0;
-        font-size: 12px;
-        line-height: 1.4;
-        color: rgba(0,0,0,0.68);
-    }
-    #menuModal .menu-item-price{
-        margin: 0;
-        font-size: 13px;
-        font-weight: 900;
-        color: #B11226; /* matches MENU_MODEL.colors.primary */
-        white-space: nowrap;
-    }
-
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kalandula Bar &amp; Grill | Angolan Portuguese kitchen in Brixton</title>
+  <meta name="description" content="Kalandula Bar &amp; Grill brings Angolan Portuguese cooking to 5 Brixton Station Road, London. Grill, restaurant and lounge. Book a table online.">
+  <meta name="theme-color" content="#12100e">
+  <meta property="og:title" content="Kalandula Bar &amp; Grill, Brixton">
+  <meta property="og:description" content="Angolan Portuguese fusion cooking in the heart of Brixton.">
+  <meta property="og:image" content="https://kalandula.co.uk/assets/video/falls-poster.jpg">
+  <link rel="icon" href="assets/img/logo-gold.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Restaurant",
+    "name": "Kalandula Bar & Grill",
+    "servesCuisine": ["Angolan", "Portuguese", "African"],
+    "address": {"@type": "PostalAddress", "streetAddress": "5 Brixton Station Road", "addressLocality": "London", "postalCode": "SW9 8PA", "addressCountry": "GB"},
+    "telephone": "+442077338274",
+    "url": "https://kalandula.co.uk",
+    "acceptsReservations": "https://app.tableo.com/r/agKC9wu",
+    "openingHours": ["Mo-Th 11:30-23:00", "Fr-Su 11:30-01:00"]
+  }
+  </script>
 </head>
+<body>
 
-    <body>
-    <header class="glass">
-        <nav class="nav-container">
-            <a href="#" class="logo">
-                <img src="./images/k-l.webp" alt="Kalandula Logo" class="logo-image">
-            </a>
-            <div class="nav-links">
-            </div>
-        </nav>
-    </header>
-    <section class="hero glass">
-       <video autoplay muted loop playsinline id="hero-video">
-    <source src="./images/kaladula-falls.mp4" type="video/mp4">
-</video>
-
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const video = document.getElementById('hero-video');
-
-        // Set playback rate for super slow motion
-        video.playbackRate = 0.25; // Adjust this value (0.25 = 25% speed)
-
-        // Ensure seamless looping
-        video.addEventListener('timeupdate', function() {
-            // Check if the video is near the end
-            if (this.currentTime > this.duration - 0.1) {
-                // Reset to the start without a visible jump
-                this.currentTime = 0;
-                this.play();
-            }
-        });
-
-        // Preload the video for smoother playback
-        video.preload = 'auto';
-
-        // Ensure the video starts playing
-        video.play().catch(error => {
-            console.log('Autoplay was prevented. User interaction is required to start playback.');
-        });
-    });
-</script>
-        <div class="hero-content">
-            <h1 class="hero-title">
-                <span class="red">K</span>ALANDUL<span class="red">A</span>
-            </h1>
-            <p class="hero-subtitle">Bar |<span class="red"> Grill</span> | Restaurant | Lounge</p>
-            <a href="https://app.tableo.com/r/agKC9wu" target="_blank" class="book-btn">BOOK NOW</a>
-        </div>
-    </section>
-    <!-- Gallery Section -->
-<div id="imageModal" class="modal">
-    <span class="modal-close">&times;</span>
-    <img class="modal-content" id="modalImage" src="" alt="Enlarged image">
-</div>
-
-<!-- First Marquee -->
-<div class="gallery-header">
-    <h2></h2>
-   <em style="background-color: #000;">Mouth watering African Cuisine</em>
-</div>
-<div class="gallery-container">
-    <div class="image-track track-1" id="track1">
-        <div class="gallery-item" onclick="openModal('./images/food-one.webp')"><img src="./images/food-one.webp" alt="Food-1"></div>
-        <div class="gallery-item" onclick="openModal('./images/food-2.webp")"><img src="./images/food-2.webp" alt="Food-2"></div>
-        <div class="gallery-item" onclick="openModal('./images/food-3.webp")"><img src="./images/food-3.webp" alt="Food-3"></div>
-        <div class="gallery-item" onclick="openModal('./images/food-4.webp")"><img src="./images/food-4.webp" alt="Food-4"></div>
-        <div class="gallery-item" onclick="openModal('./images/food-5.webp")"><img src="./images/food-5.webp" alt="Food-5"></div>
-        <div class="gallery-item" onclick="openModal('./images/food-6.webp")"><img src="./images/food-6.webp" alt="Food-6"></div>
-        <div class="gallery-item" onclick="openModal('./images/food-7.webp")"><img src="./images/food-7.webp" alt="Food-7"></div>
-        <div class="gallery-item" onclick="openModal('./images/food-8.webp")"><img src="./images/food-8.webp" alt="Food-8"></div>
-        <div class="gallery-item" onclick="openModal('./images/food-9.webp')"><img src="./images/food-9.webp" alt="Food-9"></div>
-
-        <!-- Clones -->
-        <div class="gallery-item" onclick="openModal('./images/food-one.webp')"><img src="./images/food-one.webp" alt="Food-1"></div>
-        <div class="gallery-item" onclick="openModal('./images/food-2.webp')"><img src="./images/food-2.webp" alt="Food-2"></div>
-        <div class="gallery-item" onclick="openModal('./images/food-3.webp')"><img src="./images/food-3.webp" alt="Food-3"></div>
-        <div class="gallery-item" onclick="openModal('./images/food-4.webp')"><img src="./images/food-4.webp" alt="Food-4"></div>
-        <div class="gallery-item" onclick="openModal('./images/food-5.webp')"><img src="./images/food-5.webp" alt="Food-5"></div>
-        <div class="gallery-item" onclick="openModal('./images/food-6.webp')"><img src="./images/food-6.webp" alt="Food-6"></div>
-        <div class="gallery-item" onclick="openModal('./images/food-7.webp')"><img src="./images/food-7.webp" alt="Food-7"></div>
-        <div class="gallery-item" onclick="openModal('./images/food-8.webp')"><img src="./images/food-8.webp" alt="Food-8"></div>
-        <div class="gallery-item" onclick="openModal('./images/food-9.webp')"><img src="./images/food-9.webp" alt="Food-9"></div>
+  <!-- Header -->
+  <header class="bar" id="bar">
+    <a href="#top" class="bar__logo" aria-label="Kalandula, back to top"><img src="assets/img/logo-cream.png" alt="Kalandula" width="485" height="194"></a>
+    <div class="bar__right">
+      <a class="pill pill--gold" href="https://app.tableo.com/r/agKC9wu" target="_blank" rel="noopener">Book a table</a>
+      <button class="burger" id="js-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="js-menu"><span></span><span></span></button>
     </div>
-</div>
-    
+  </header>
 
-    <section id="about" class="about-section glass">
-    <div class="about-container">
-        <div class="about-content">
-            <div class="about-text">
-                <h2 class="section-title">
-                    <span class="red">A</span>BOUT US
-                </h2>
-                <p class="about-description">
-                    Nestled in the heart of Brixton, Kalandula brings the vibrant flavors of Angola 
-                    to London's diverse culinary scene. Named after Angola's majestic Kalandula Falls, 
-                    our restaurant is a celebration of Angolan-Portuguese fusion cuisine.
-                </p>
-                <p class="about-description">
-                    Our expert chefs blend traditional Angolan recipes with modern cooking techniques, 
-                    creating an unforgettable dining experience that honors our heritage while embracing 
-                    contemporary tastes.
-                </p>
-            </div>
-            <div class="about-stats">
-                <div class="stat-item">
-                    <span class="stat-number">5+</span>
-                    <span class="stat-label">Years of Excellence</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number">1000+</span>
-                    <span class="stat-label">Happy Customers</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number">30+</span>
-                    <span class="stat-label">Signature Dishes</span>
-                </div>
-            </div>
-        </div>
-       <div class="about-image-grid">
-            <img src="./images/Interior.webp" alt="Restaurant Interior" class="about-img">
-
-            <img src="./images/Chef.webp" alt="Chef at Work" class="about-img">
-        </div>
+  <!-- Ink reveal navigation -->
+  <nav class="ink" id="js-menu" aria-hidden="true">
+    <svg class="ink__svg" aria-hidden="true"><defs><clipPath id="ink-clip"><circle id="js-clip-circle" cx="0" cy="0" r="0"/></clipPath></defs><rect width="100%" height="100%" clip-path="url(#ink-clip)"/></svg>
+    <div class="ink__content" id="js-content">
+      <ul class="ink__links">
+        <li><a class="ink__link" href="#story">Our story</a></li>
+        <li><a class="ink__link" href="#menu">The menu</a></li>
+        <li><a class="ink__link" href="#table">Gallery</a></li>
+        <li><a class="ink__link" href="#visit">Find us</a></li>
+      </ul>
+      <div class="ink__meta">
+        <p>5 Brixton Station Rd<br>London SW9 8PA</p>
+        <p><a href="tel:+442077338274">020 7733 8274</a></p>
+        <p><a href="https://www.instagram.com/kalandulabng" target="_blank" rel="noopener">Instagram</a></p>
+      </div>
     </div>
-    </div>
-</section>
+  </nav>
 
-      <!-- Menu Modal -->
-<div id="menuModal" class="modal">
-  <div class="modal-content">
-    <span class="close-modal" id="closeModal">&times;</span>
-    <div id="menuGridMount"></div>
-  </div>
-</div>
+  <main id="top">
 
-    <button class="menu-btn" id="menuBtn">MENU</button>
-
-    <section class="info-section">
-        <div class="info-card glass">
-            <h3>Hours</h3>
-            <p>Mon-Thu: 11:30-11PM</p>
-            <p> Fri-Sun: 11:30-1am</p>
+    <!-- Hero: the falls seen through the wordmark -->
+    <section class="falls" id="js-falls">
+      <div class="falls__sticky">
+        <div class="falls__mask" id="js-mask">
+          <video autoplay muted loop playsinline preload="auto" poster="assets/video/falls-poster.jpg">
+            <source src="assets/video/falls.mp4" type="video/mp4">
+          </video>
         </div>
-        <div class="info-card glass">
-
-            <h3>Location</h3>
-            <a href="https://g.co/kgs/prx7tME" class="modern-link">5 Brixton Station Rd, London SW9 8PA</a>
-<a href="tel:02077338274" class="modern-link">02077338274</a>
+        <p class="falls__kicker" id="js-kicker">Bar <i>&amp;</i> Grill &middot; Restaurant &middot; Lounge &middot; Brixton</p>
+        <div class="falls__over" id="js-over">
+          <h1 class="display">Mouth watering<br><em>African</em> cuisine</h1>
+          <a class="pill pill--gold" href="https://app.tableo.com/r/agKC9wu" target="_blank" rel="noopener">Reserve your table</a>
         </div>
-        <div class="info-card glass">
-            <a href="https://app.tableo.com/r/agKC9wu" target="_blank" class="book-btn">BOOK NOW</a>
-        </div>
+        <span class="falls__hint" id="js-hint">Scroll</span>
+      </div>
     </section>
 
-    <!-- Footer HTML -->
-<footer class="glass">
-    <p>Kalandula 2025</p>
-    <div class="social-links">
-        <a href="https://www.instagram.com/kalandulabng?igsh=eDBmNnVvaW9leTh1" target="_blank">Instagram</a>
+    <!-- Story -->
+    <section class="story" id="story">
+      <p class="eyebrow">Our story</p>
+      <p class="story__lede js-words">Nestled in the heart of Brixton, Kalandula brings the vibrant flavours of Angola to London. Named after the majestic Kalandula Falls, our kitchen is a celebration of Angolan Portuguese cooking.</p>
+      <div class="story__grid">
+        <figure class="story__img story__img--chef js-par" data-speed="-0.12"><img src="assets/img/chef.webp" alt="Our chef cooking in the Kalandula kitchen" loading="lazy" width="1200" height="1600"></figure>
+        <div class="story__copy">
+          <p>Our chefs blend traditional Angolan recipes with modern technique, creating a meal that honours our heritage while embracing contemporary tastes.</p>
+          <ul class="stats">
+            <li><b data-count="5">5</b><span>years in Brixton</span></li>
+            <li><b data-count="1000">1000</b><span>happy guests</span></li>
+            <li><b data-count="30">30</b><span>signature dishes</span></li>
+          </ul>
+        </div>
+        <figure class="story__img story__img--room js-par" data-speed="0.1"><img src="assets/img/interior.webp" alt="The dining room at Kalandula" loading="lazy" width="1600" height="1200"></figure>
+      </div>
+    </section>
+
+    <!-- Pattern band -->
+    <div class="band" aria-hidden="true"></div>
+
+    <!-- Menu -->
+    <section class="menu" id="menu">
+      <div class="menu__head">
+        <p class="eyebrow">The menu</p>
+        <h2 class="display display--md">From the grill,<br><em>the pot</em> and the oven</h2>
+      </div>
+      <div class="menu__tabs" role="tablist" id="js-tabs"></div>
+      <div class="menu__body">
+        <ul class="menu__list" id="js-list"></ul>
+        <figure class="menu__photo" aria-hidden="true"><img id="js-menu-photo" src="assets/img/food-7.webp" alt=""></figure>
+      </div>
+      <p class="menu__note">Prices include VAT. Please tell us about any allergies before you order.</p>
+    </section>
+
+    <!-- Cascade gallery, images fall like water -->
+    <section class="cascade" id="table">
+      <div class="cascade__intro">
+        <p class="eyebrow">At the table</p>
+        <h2 class="display display--md">A cascade<br>of <em>flavour</em></h2>
+      </div>
+      <div class="cascade__images" id="js-cascade"></div>
+      <div class="cascade__outro">
+        <h2 class="display display--md">Pull up<br>a <em>chair</em></h2>
+        <a class="pill pill--gold" href="https://app.tableo.com/r/agKC9wu" target="_blank" rel="noopener">Book a table</a>
+      </div>
+    </section>
+
+    <!-- Visit -->
+    <section class="visit" id="visit">
+      <div class="visit__col">
+        <p class="eyebrow">Find us</p>
+        <h2 class="display display--md">5 Brixton<br>Station Road</h2>
+        <p class="visit__addr">London SW9 8PA</p>
+        <div class="visit__actions">
+          <a class="pill pill--gold" href="https://app.tableo.com/r/agKC9wu" target="_blank" rel="noopener">Book a table</a>
+          <a class="pill pill--line" href="https://g.co/kgs/prx7tME" target="_blank" rel="noopener">Get directions</a>
+        </div>
+      </div>
+      <div class="visit__col visit__hours">
+        <dl>
+          <div><dt>Monday to Thursday</dt><dd>11:30am to 11pm</dd></div>
+          <div><dt>Friday to Sunday</dt><dd>11:30am to 1am</dd></div>
+          <div><dt>Call us</dt><dd><a href="tel:+442077338274">020 7733 8274</a></dd></div>
+          <div><dt>Follow</dt><dd><a href="https://www.instagram.com/kalandulabng" target="_blank" rel="noopener">@kalandulabng</a></dd></div>
+        </dl>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <img class="foot__logo" src="assets/img/logo-gold.png" alt="Kalandula" loading="lazy" width="485" height="194">
+    <div class="foot__row">
+      <span>&copy; <span id="js-year">2026</span> Kalandula Bar &amp; Grill</span>
+      <a href="https://github.com/SadikMohamud" target="_blank" rel="noopener">Snurm</a>
     </div>
-    <p class="developer-credit">Developed by <a href="https://github.com/SadikMohamud" target="_blank">Snurm.dev © </a></p>
-</footer>
-            <script>
-       // Mobile menu functionality
-const mobileMenuBtn = document.querySelector('.menu-btn');
-const mobileMenu = document.querySelector('.mobile-menu');
+  </footer>
 
-mobileMenuBtn.addEventListener('click', () => {
-    mobileMenu.classList.toggle('active');
-});
-
-// Close mobile menu when clicking a link
-const mobileLinks = document.querySelectorAll('.mobile-menu a');
-mobileLinks.forEach(link => {
-    link.addEventListener('click', () => {
-        mobileMenu.classList.remove('active');
-    });
-});
-
-// Close mobile menu when clicking outside
-document.addEventListener('click', (e) => {
-    if (!mobileMenu.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
-        mobileMenu.classList.remove('active');
-    }
-});
-
-         // Modal functionality
-         const menuModal = document.getElementById('menuModal');
-        const modalMenuBtn = document.getElementById('menuBtn');
-        const closeModal = document.getElementById('closeModal');
-        // =========================
-        // Menu model (data + colors)
-        // =========================
-        const MENU_MODEL = {
-            colors: {
-                primary: "#B11226",
-                secondary: "#6A1B4D",
-                accent: "#D9902F"
-            },
-            sections: [
-                {
-                    title: "Starters",
-                    color: "accent",
-                    items: [
-                        { title: "Rissóis / Prawn Cake", price: 2.00 },
-                        { title: "Pastéis de Bacalhau / Fish Cake", price: 2.00 },
-                        { title: "Soup of the day", price: 7.00 },
-                        { title: "Fried Plantain", price: 4.00 },
-                        { title: "Aubergine Stuffed With Chickpea", price: 4.99 },
-                        { title: "Beef / Pork Skewers", price: 5.00 },
-                        { title: "Portuguese Chorizo", price: 6.00, description: "Cooked in olive oil with white wine sauce served with bread." },
-                        { title: "Taba - Smoked Bo Lamb", price: 11.99 },
-                        { title: "Garlic King Prawns", price: 12.50, description: "In butter sauce, served with bread." }
-                    ]
-                },
-                {
-                    title: "Mains",
-                    color: "primary",
-                    items: [
-                        { title: "Pork Ribs", price: 12.99, description: "Served with chips or rice." },
-                        { title: "Golden Fried Fish", price: 13.99, description: "Served with rice and salad / beans." },
-                        { title: "Bitoque", price: 14.99, description: "Steak, with rice, chips and an egg." },
-                        { title: "Chicken Breast With Cognac Sauce", price: 14.99, description: "Served with vegetables." },
-                        { title: "Half Chicken", price: 15.00, description: "Served with chips and salad." },
-                        { title: "Makayabu", price: 15.99, description: "Salty cod cooked with onions, peppers and garlic sauce. Served with kwanga/plantain with greens." },
-                        { title: "Fungi/Fufu", price: 21.00 }
-                    ]
-                },
-                {
-                    title: "Vegetarian / Vegan",
-                    color: "secondary",
-                    items: [
-                        { title: "Spinach With Garlic", price: 7.00 },
-                        { title: "Caesar Salad", price: 8.00 },
-                        { title: "Tuna Salad", price: 8.00 },
-                        { title: "Chickpea and Aubergine Curry", price: 12.00 },
-                        { title: "Salmon and Avocado Salad", price: 16.00 },
-                        { title: "Vegan Special", price: 16.00, description: "Kassava leafs with plantain, lassawa roots and sweet potatoes" }
-                    ]
-                },
-                {
-                    title: "Extras",
-                    color: "accent",
-                    items: [
-                        { title: "Beans", price: 3.50 },
-                        { title: "Chips", price: 3.50 },
-                        { title: "Kassava Leafs", price: 3.50 },
-                        { title: "Kwanga", price: 3.50 },
-                        { title: "Salads", price: 3.50 },
-                        { title: "Savoury Rice", price: 3.50 }
-                    ]
-                },
-                {
-                    title: "Desserts",
-                    color: "secondary",
-                    items: [
-                        { title: "Mikate", price: 2.00 },
-                        { title: "Rice Pudding", price: 2.99 },
-                        { title: "Lemon Mousse", price: 3.50 },
-                        { title: "Pudim", price: 3.50 },
-                        { title: "Chocolate Cake", price: 4.50 },
-                        { title: "Baba de Caramelo", price: 4.00 },
-                        { title: "Velvet Cake", price: 4.50 }
-                    ]
-                }
-            ]
-        };
-
-        function formatGBP(n) {
-            return "£" + n.toFixed(2);
-        }
-
-        function renderGridMenu() {
-            const mount = document.getElementById("menuGridMount");
-            if (!mount) return;
-
-            mount.innerHTML = `
-              <div class="menu-grid">
-                ${MENU_MODEL.sections.map(section => {
-                    const accent = MENU_MODEL.colors[section.color] || MENU_MODEL.colors.accent;
-                    return `
-                      <div class="menu-section-card">
-                        <div class="menu-section-header" style="background:${accent}">
-                          ${section.title}
-                        </div>
-                        <div class="menu-items">
-                          ${section.items.map(item => `
-                            <div class="menu-item-row">
-                              <div style="min-width:0">
-                                <p class="menu-item-title">${item.title}</p>
-                                ${item.description ? `<p class="menu-item-desc">${item.description}</p>` : ``}
-                              </div>
-                              <p class="menu-item-price">${formatGBP(item.price)}</p>
-                            </div>
-                          `).join("")}
-                        </div>
-                      </div>
-                    `;
-                }).join("")}
-              </div>
-            `;
-        }
-
-
-        modalMenuBtn.onclick = function() {
-            renderGridMenu();
-            menuModal.style.display = "block";
-            document.body.style.overflow = "hidden";
-        }
-
-        closeModal.onclick = function() {
-            menuModal.style.display = "none";
-            document.body.style.overflow = "auto";
-        }
-
-        window.onclick = function(event) {
-            if (event.target == menuModal) {
-                menuModal.style.display = "none";
-                document.body.style.overflow = "auto";
-            }
-        }
-                        // Track controls
-const tracks = [
-    document.getElementById('track1'),
-    document.getElementById('track2'),
-    document.getElementById('track3')
-];
-const pauseBtn = document.getElementById('pauseBtn');
-const resumeBtn = document.getElementById('resumeBtn');
-
-pauseBtn.addEventListener('click', () => {
-    tracks.forEach(track => {
-        track.style.animationPlayState = 'paused';
-    });
-});
-
-resumeBtn.addEventListener('click', () => {
-    tracks.forEach(track => {
-        track.style.animationPlayState = 'running';
-    });
-});
-
-// Modal functionality
-const modal = document.getElementById('imageModal');
-const modalImg = document.getElementById('modalImage');
-const closeBtn = document.getElementsByClassName('modal-close')[0];
-
-function openModal(imgSrc) {
-    modal.style.display = 'block';
-    modalImg.src = imgSrc;
-}
-
-closeBtn.onclick = function() {
-    modal.style.display = 'none';
-}
-
-modal.onclick = function(e) {
-    if (e.target === modal) {
-        modal.style.display = 'none';
-    }
-}
-
-        // Tab switching functionality
-        function switchTab(tabName) {
-            // Hide all menu sections
-            const menuSections = document.getElementsByClassName('menu-section');
-            for (let section of menuSections) {
-                section.classList.remove('active');
-            }
-            
-            // Deactivate all tabs
-            const tabs = document.getElementsByClassName('tab');
-            for (let tab of tabs) {
-                tab.classList.remove('active');
-            }
-            
-            // Show selected section and activate tab
-            document.getElementById(tabName).classList.add('active');
-            event.target.classList.add('active');
-        }
-
-    </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+  <script src="assets/js/menu-data.js"></script>
+  <script src="assets/js/main.js"></script>
 </body>
 </html>
